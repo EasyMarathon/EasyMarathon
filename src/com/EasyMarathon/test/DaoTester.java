@@ -92,7 +92,7 @@ public class DaoTester
 			if (aid == null)
 				return "未绑定";
 			else
-				return aid.toString();
+				return "号码牌："+aid.toString();
 		}
 		catch (SQLException e)
 		{
@@ -110,9 +110,9 @@ public class DaoTester
 			boolean res = athdao.AddAthlete(wID, Integer.parseInt(cont[1]),
 					Integer.parseInt(cont[2]));
 			if (res)
-				return "已存在";
-			else
 				return "ok";
+			else
+				return "已存在";
 		}
 		catch (SQLException e)
 		{

@@ -113,7 +113,7 @@ public class BaseTest extends HttpServlet
 				case "sys-bind":
 					retmsg.setContent(dt.BindEvents(strs));break;
 				case "sys-pic":
-					retmsg.setContent(dt.BindEvents(strs));break;
+					retmsg.setContent(dt.GetPics(strs));break;
 				default:
 					retmsg.setContent("ÎÒÌı²»¶®/:dig");break;
 				}
