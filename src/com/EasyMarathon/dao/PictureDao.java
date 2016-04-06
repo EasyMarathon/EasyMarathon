@@ -18,14 +18,14 @@ public class PictureDao
 		conn = c;
 	}
 
-	public HashMap<String,Integer> GetPics(String wechatID, int eventID)
+	public HashMap<String,Integer> GetPics(int aID, int eventID)
 			throws SQLException
 	{
-		final String sql1 = "select PicID,PicStatus from Pics where WechatID=? AND EventID=?";
+		final String sql1 = "select PicID,PicStatus from Pics where EventID=? AND AthleteID=?";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
-			ps1.setString(1, wechatID);
-			ps1.setInt(2, eventID);
+			ps1.setInt(1, eventID);
+			ps1.setInt(2, aID);
 			ResultSet rs1 = ps1.executeQuery();
 			HashMap<String,Integer> pics = new HashMap<>();
 			

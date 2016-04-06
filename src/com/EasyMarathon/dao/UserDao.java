@@ -31,26 +31,26 @@ public class UserDao
 			UserBean user = new UserBean();
 			user.setWechatID(wechatID);
 			user.setUserName(rs1.getString("UserName"));
-			user.setCellphone(rs1.getString("Cellphone"));
+			user.setCelphone(rs1.getString("Celphone"));
 			return user;
 		}
 	}
 
-	public UserBean AddUser(String wechatID, String userName, String cellphone) throws SQLException
+	public UserBean AddUser(String wechatID, String userName, String celphone) throws SQLException
 	{
-		final String sql1 = "insert into Users (WechatID,UserName,Cellphone) values(?,?,?)";
+		final String sql1 = "insert into Users (WechatID,UserName,Celphone) values(?,?,?)";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
 			ps1.setString(1, wechatID);
 			ps1.setString(2, userName);
-			ps1.setString(3, cellphone);
+			ps1.setString(3, celphone);
 			
 			ps1.executeUpdate();
 
 			UserBean user = new UserBean();
 			user.setWechatID(wechatID);
 			user.setUserName(userName);
-			user.setCellphone(cellphone);
+			user.setCelphone(celphone);
 			return user;
 		}
 	}
