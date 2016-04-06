@@ -15,4 +15,12 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/bg/</url-pattern>
   </filter-mapping>
+  <context-param>
+    <param-name>appid</param-name>
+    <param-value>wxfafed3f7ae1982bd</param-value>
+  </context-param>
+  <context-param>
+    <param-name>appsecret</param-name>
+    <param-value>901266e75a806a5e9872a5e17a95eeb1</param-value>
+  </context-param>
 </web-app>
