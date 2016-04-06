@@ -4,7 +4,7 @@ public class UserBean
 {
 	private String wechatID = "";
 	private String userName = "";
-	private String cellphone = "";
+	private String celphone = "";
 	
 	
 	public String getWechatID()
@@ -23,13 +23,13 @@ public class UserBean
 	{
 		this.userName = userName;
 	}
-	public String getCellphone()
+	public String getCelphone()
 	{
-		return cellphone;
+		return celphone;
 	}
-	public void setCellphone(String cellphone)
+	public void setCelphone(String celphone)
 	{
-		this.cellphone = cellphone;
+		this.celphone = celphone;
 	}
 	
 }
