@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="strutsBean" namespace="/" extends="struts-default">
+    
+    	<default-action-ref name="login.jsp" />
+
+        <global-results>
+        	<result name="error">403.jsp</result>
+            <result name="404">404.jsp</result>
+            <result name="null">todo.jsp</result>
+        </global-results>
+        
+        <action name="img" class="action.ImgAction" method="Basic">
+			<result name="success" type="stream">
+    			<param name="contentType">image/*</param>  
+				<param name="inputName">istream</param>  
+				<param name="bufferSize">65536</param>
+    		</result>
+    	</action>
+		<action name="login" class="action.UserAction" method="Login">
+		</action>
+		<action name="register" class="action.UserAction" method="Register">
+		</action>
+		<action name="logout" class="action.UserAction" method="Logout">
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
+		<action name="chgmyinfo" class="action.UserInfoAction" method="ChangeBasic">
+		</action>
+		<action name="my" class="action.UserInfoAction" method="Overall">
+			<result name="unlogin" type="redirect">/login.jsp</result>
+			<result name="success">/MyInfo.jsp</result>
+		</action>
+		<action name="mytasks" class="action.UserInfoAction" method="TaskOngoing">
+		    <result name="unlogin" type="redirect">/login.jsp</result>
+			<result name="company">/cpn_MyTasks_ongoing.jsp</result>
+			<result name="student">/stu_MyTasks_ongoing.jsp</result>
+		</action>
+		<action name="getapplyers" class="action.TaskAction" method="GetApplyers">
+		</action>
+		<action name="acceptapplyer" class="action.TaskAction" method="AcceptApply">
+		</action>
+		<action name="people" class="action.UserInfoAction" method="ViewOther">
+			<result name="success">/AnyoneInfo.jsp</result>
+		</action>
+		<action name="taskview" class="action.TaskAction" method="View">
+			<result name="success">/ShowTask.jsp</result>
+		</action> 
+		<action name="task" class="action.TaskAction" method="List">
+			<result name="success">/TaskList.jsp</result>
+		</action>
+		<action name="addtask" class="action.TaskAction" method="PostTask">
+		</action>
+		<action name="apply" class="action.TaskAction" method="Apply">
+		</action>
+		
+    </package>
+    
+</struts>
