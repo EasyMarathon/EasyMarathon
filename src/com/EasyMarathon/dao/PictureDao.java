@@ -38,14 +38,14 @@ public class PictureDao
 		}
 	}
 
-	public boolean AddPic(String wechatID, int eventID, String picID)
+	public boolean AddPic(int eventID, int aID, String picID)
 			throws SQLException
 	{
-		final String sql1 = "insert into Pics (WechatID,EventID,PicID) values(?,?,?)";
+		final String sql1 = "insert into Pics (EventID,AthleteID,PicID) values(?,?,?)";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
-			ps1.setString(1, wechatID);
-			ps1.setInt(2, eventID);
+			ps1.setInt(1, eventID);
+			ps1.setInt(2, aID);
 			ps1.setString(3, picID);
 
 			ps1.executeUpdate();

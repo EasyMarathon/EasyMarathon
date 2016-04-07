@@ -114,6 +114,8 @@ public class BaseTest extends HttpServlet
 					retmsg.setContent(dt.BindEvents(strs));break;
 				case "sys-pic":
 					retmsg.setContent(dt.GetPics(strs));break;
+				case "sys-test":
+					retmsg.setContent("get ans:"+NumTest.test());break;
 				default:
 					retmsg.setContent("ÎÒÌı²»¶®/:dig");break;
 				}
