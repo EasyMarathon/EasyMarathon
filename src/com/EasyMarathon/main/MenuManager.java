@@ -19,10 +19,10 @@ public class MenuManager {
 	 * @return
 	 */
 	private static Menu getMenu() {
-		ClickButton btn11 = new ClickButton();
+		ViewButton btn11 = new ViewButton();
 		btn11.setName("我要上传");
-		btn11.setType("click");
-		btn11.setKey("upLoad");
+		btn11.setType("view");
+		btn11.setUrl("http://120.27.106.188/easyrun/upLoadPicture.jsp");
 
 		ClickButton btn12 = new ClickButton();
 		btn12.setName("个人中心");
