@@ -11,6 +11,7 @@ import com.EasyMarathon.bean.UserBean;
 import com.EasyMarathon.dao.AthleteDao;
 import com.EasyMarathon.dao.DaoBase;
 import com.EasyMarathon.dao.EventDao;
+import com.EasyMarathon.dao.FreePicDao;
 import com.EasyMarathon.dao.PictureDao;
 import com.EasyMarathon.dao.UserDao;
 
@@ -38,6 +39,10 @@ public class DaoTester
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
 		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
 	}
 
 	String ShowMe(String[] cont)
@@ -57,6 +62,10 @@ public class DaoTester
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 
@@ -80,6 +89,10 @@ public class DaoTester
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
 		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
 	}
 
 	String ChooseEvents(String[] cont)
@@ -92,12 +105,16 @@ public class DaoTester
 			if (aid == null)
 				return "Œ¥∞Û∂®";
 			else
-				return "∫≈¬Î≈∆£∫"+aid.toString();
+				return "∫≈¬Î≈∆£∫" + aid.toString();
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 
@@ -118,6 +135,10 @@ public class DaoTester
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 
@@ -141,6 +162,77 @@ public class DaoTester
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String PutPic(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		PictureDao picdao = new PictureDao(conn);
+		try
+		{
+			picdao.AddPic(Integer.parseInt(cont[1]), Integer.parseInt(cont[2]),
+					cont[3]);
+			return "finish";
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String PutFreePic(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		FreePicDao fpdao = new FreePicDao(conn);
+		try
+		{
+			fpdao.AddPic(Integer.parseInt(cont[1]), wID, cont[2]);
+			return "finish";
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String GetFreePics(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		FreePicDao fpdao = new FreePicDao(conn);
+		try
+		{
+			HashMap<String, Integer> pics = fpdao.GetFreePicsByWechatID(wID);
+			String ret = "get " + pics.size() + " pics\n";
+			for (Map.Entry<String, Integer> e : pics.entrySet())
+			{
+				ret += "picID:" + e.getKey() + "\neventID:" + e.getValue()
+						+ "\n";
+			}
+			return ret;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 }
