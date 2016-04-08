@@ -169,6 +169,7 @@ public class AdvancedUtil {
 		requestUrl = requestUrl.replace("CODE", code);
 		// 获取网页授权凭证
 		JSONObject jsonObject = CommonUtil.httpsRequest(requestUrl, "GET", null);
+		System.out.println("json:"+jsonObject); 
 		if (null != jsonObject) {
 			try {
 				wat = new WeixinOauth2Token();
@@ -184,6 +185,8 @@ public class AdvancedUtil {
 				log.error("获取网页授权凭证失败 errcode:{} errmsg:{}", errorCode, errorMsg);
 			}
 		}
+		System.out.println("---leave---");
+		System.out.println(wat);
 		return wat;
 	}
 

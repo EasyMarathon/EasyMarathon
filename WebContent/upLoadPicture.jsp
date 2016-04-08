@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="com.EasyMarathon.bean.SNSUserInfo";%>
+<%@ page import="com.EasyMarathon.bean.SNSUserInfo"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,12 +20,13 @@
 <title>我要上传</title>
 </head>
 <body>
-
 	<% 
 		// 获取由OAuthServlet中传入的参数
 		SNSUserInfo user = (SNSUserInfo)request.getAttribute("snsUserInfo"); 
 		if(null != user) {
 	%>
+	<!-- 
+	以下是获取用户信息的方法，按需要你们用吧=。=
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr><td width="20%">属性</td><td width="80%">值</td></tr>
 		<tr><td>OpenID</td><td><%=user.getOpenId()%></td></tr>
@@ -37,6 +38,7 @@
 		<tr><td>头像</td><td><%=user.getHeadImgUrl()%></td></tr>
 		<tr><td>特权</td><td><%=user.getPrivilegeList()%></td></tr>
 	</table>
+	 -->
 	<%
 		}
 		else 

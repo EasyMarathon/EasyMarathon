@@ -28,10 +28,8 @@ public class OAuthServlet extends HttpServlet {
 
 		// 用户同意授权
 		if (!"authdeny".equals(code)) {
-			System.out.println("code:"+code);
 			// 获取网页授权access_token
-			WeixinOauth2Token weixinOauth2Token = AdvancedUtil.getOauth2AccessToken("APPID", "APPSECRET", code);
-			System.out.println(weixinOauth2Token);
+			WeixinOauth2Token weixinOauth2Token = AdvancedUtil.getOauth2AccessToken("wxa6bb25947675b744", "c39ae4fc9da658a6642e2dd47626a45f", code);
 			
 			// 网页授权接口访问凭证
 			String accessToken = weixinOauth2Token.getAccessToken();
