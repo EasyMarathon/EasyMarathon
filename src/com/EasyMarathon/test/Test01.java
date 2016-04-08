@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.dom4j.DocumentException;
 
 import com.EasyMarathon.bean.MsgBean;
+import com.EasyMarathon.util.SignUtil;
 
 /**
  * Servlet implementation class Test01
@@ -41,7 +42,7 @@ public class Test01 extends HttpServlet
 		if (echostr != null && echostr.length() > 1)
 		{
 			// 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
-			if (EchoTest.checkSignature(signature, timestamp, nonce))
+			if (SignUtil.checkSignature(signature, timestamp, nonce))
 			{
 				out.print(echostr);
 			}
@@ -64,7 +65,7 @@ public class Test01 extends HttpServlet
 		String signature = request.getParameter("signature");
 		String timestamp = request.getParameter("timestamp");// 时间戳
 		String nonce = request.getParameter("nonce");// 随机数
-		if (EchoTest.checkSignature(signature, timestamp, nonce))
+		if (SignUtil.checkSignature(signature, timestamp, nonce))
 		{
 			String odat = SimpleReply(request);
 			out.print(odat);

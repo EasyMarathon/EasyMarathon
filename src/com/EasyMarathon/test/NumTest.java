@@ -1,6 +1,6 @@
 package com.EasyMarathon.test;
 
-import com.EasyMarathon.Util.NumIdentify;
+import com.EasyMarathon.util.NumIdentify;
 
 public class NumTest
 {
