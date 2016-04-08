@@ -75,12 +75,13 @@ public class DaoTester
 		EventDao eventdao = new EventDao(conn);
 		try
 		{
-			ArrayList<EventBean> events = eventdao.GetEventByStatus(EventBean.Status.ongoing);
+			ArrayList<EventBean> events = eventdao
+					.GetEventByStatus(EventBean.Status.ongoing);
 			String ret = "get " + events.size() + " events\n";
 			for (EventBean eb : events)
 			{
-				ret += "ID:" + eb.getEventID() + "\nName:" + eb.getEventName()
-						+ "\n";
+				ret += "ID:" + eb.getEventID() + ",\tstatus:" + eb.getEventStatus().name()
+						+ "\nName:" + eb.getEventName() + "\n";
 			}
 			return ret;
 		}
@@ -140,7 +141,7 @@ public class DaoTester
 			DaoBase.close(conn, null, null);
 		}
 	}
-	
+
 	String BindEvents(String[] cont)
 	{
 		conn = DaoBase.getConnection(true);
@@ -171,7 +172,7 @@ public class DaoTester
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			HashMap<String, PictureDao.Status> pics = picdao.GetPics(
+			HashMap<String, PictureDao.Status> pics = picdao.GetAllPics(
 					Integer.parseInt(cont[1]), Integer.parseInt(cont[2]));
 			String ret = "get " + pics.size() + " pics\n";
 			for (Map.Entry<String, PictureDao.Status> e : pics.entrySet())
@@ -212,23 +213,21 @@ public class DaoTester
 			DaoBase.close(conn, null, null);
 		}
 	}
-	
+
 	String BuyPic(String[] cont)
 	{
 		conn = DaoBase.getConnection(true);
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			HashMap<String, PictureDao.Status> pics = picdao.GetPics(
-					Integer.parseInt(cont[1]), Integer.parseInt(cont[2]));
-			PictureDao.Status oldS = pics.get(cont[1]);
-			PictureDao.Status newS;
-			if(oldS == PictureDao.Status.onSale)
+			PictureDao.Status oldS = picdao.GetPicByPicID(cont[1]);
+			PictureDao.Status newS = null;
+			if (oldS == PictureDao.Status.onSale)
 				newS = PictureDao.Status.hasBuy;
-			else
+			else if (oldS == PictureDao.Status.hasBuy)
 				newS = PictureDao.Status.onSale;
 			String ret = picdao.ChgPicStatus(cont[1], newS).name();
-			return "new Status:"+ret;
+			return "new Status:" + ret;
 		}
 		catch (SQLException e)
 		{

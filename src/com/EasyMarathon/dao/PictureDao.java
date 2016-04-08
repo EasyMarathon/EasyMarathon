@@ -20,7 +20,7 @@ public class PictureDao
 		conn = c;
 	}
 
-	public HashMap<String, Status> GetPics(int aID, int eventID)
+	public HashMap<String, Status> GetAllPics(int aID, int eventID)
 			throws SQLException
 	{
 		final String sql1 = "select PicID,PicStatus from Pics where EventID=? AND AthleteID=?";
@@ -37,6 +37,24 @@ public class PictureDao
 			}
 
 			return pics;
+		}
+	}
+	
+	public Status GetPicByPicID(String picID)
+			throws SQLException
+	{
+		final String sql1 = "select PicStatus from Pics where PicID=?";
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
+		{
+			ps1.setString(1, picID);
+			ResultSet rs1 = ps1.executeQuery();
+
+			if (rs1.next())
+			{
+				return Status.values()[rs1.getInt(1)];
+			}
+
+			return null;
 		}
 	}
 
