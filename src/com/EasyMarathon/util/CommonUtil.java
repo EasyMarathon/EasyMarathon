@@ -157,6 +157,6 @@ public class CommonUtil {
 	}
 	
 	public static void main(String args[]){
-		System.out.println(urlEncodeUTF8("http://://120.27.106.188/easyrun/oauthServlet"));
+		System.out.println(urlEncodeUTF8("http://120.27.106.188/easyrun/oauthServlet"));
 	}
 }
