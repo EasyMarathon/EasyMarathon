@@ -148,12 +148,12 @@ public class DaoTester
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			HashMap<String, Integer> pics = picdao.GetPics(
+			HashMap<String, PictureDao.Status> pics = picdao.GetPics(
 					Integer.parseInt(cont[1]), Integer.parseInt(cont[2]));
 			String ret = "get " + pics.size() + " pics\n";
-			for (Map.Entry<String, Integer> e : pics.entrySet())
+			for (Map.Entry<String, PictureDao.Status> e : pics.entrySet())
 			{
-				ret += "picID:" + e.getKey() + "\nstatus:" + e.getValue()
+				ret += "picID:" + e.getKey() + "\nstatus:" + e.getValue().name()
 						+ "\n";
 			}
 			return ret;

@@ -2,9 +2,13 @@ package com.EasyMarathon.bean;
 
 public class EventBean
 {
+	public static enum Status
+	{
+		ongoing, finish;
+	}
 	private int eventID = -1;
 	private String eventName = "";
-	private int eventStatus = -1;
+	private Status eventStatus;
 
 	public int getEventID()
 	{
@@ -26,14 +30,19 @@ public class EventBean
 		this.eventName = eventName;
 	}
 
-	public int getEventStatus()
+	public Status getEventStatus()
 	{
 		return eventStatus;
 	}
 
-	public void setEventStatus(int eventStatus)
+	public void setEventStatus(Status eventStatus)
 	{
 		this.eventStatus = eventStatus;
 	}
 
+	public void setEventStatus(int eventStatus)
+	{
+		this.eventStatus = Status.values()[eventStatus];
+	}
+	
 }

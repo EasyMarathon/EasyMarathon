@@ -1,8 +1,5 @@
 package com.EasyMarathon.test;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import com.EasyMarathon.Util.NumIdentify;
 
 public class NumTest
