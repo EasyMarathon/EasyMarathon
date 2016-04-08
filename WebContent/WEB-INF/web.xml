@@ -23,4 +23,15 @@
     <param-name>appsecret</param-name>
     <param-value>901266e75a806a5e9872a5e17a95eeb1</param-value>
   </context-param>
+  
+	<servlet>
+		<servlet-name>oauthServlet</servlet-name>
+		<servlet-class>
+			com.EasyMarathon.servlet.OAuthServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>oauthServlet</servlet-name>
+		<url-pattern>/oauthServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

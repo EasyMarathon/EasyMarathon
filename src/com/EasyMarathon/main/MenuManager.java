@@ -22,7 +22,9 @@ public class MenuManager {
 		ViewButton btn11 = new ViewButton();
 		btn11.setName("我要上传");
 		btn11.setType("view");
-		btn11.setUrl("http://120.27.106.188/easyrun/upLoadPicture.jsp");
+		btn11.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
+				+ "redirect_uri=http%3A%2F%2F%3A%2F%2F120.27.106.188%2Feasyrun%2FoauthServlet&response_type=code&"
+				+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
 		ClickButton btn12 = new ClickButton();
 		btn12.setName("个人中心");

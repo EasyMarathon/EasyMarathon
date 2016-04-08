@@ -41,6 +41,6 @@ public class OAuthServlet extends HttpServlet {
 			request.setAttribute("snsUserInfo", snsUserInfo);
 		}
 		// Ìø×ªµ½index.jsp
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("upLoadPicture.jsp").forward(request, response);
 	}
 }
