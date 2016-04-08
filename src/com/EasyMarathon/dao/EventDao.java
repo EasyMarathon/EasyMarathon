@@ -37,12 +37,12 @@ public class EventDao
 		}
 	}
 
-	public ArrayList<EventBean> GetEventByStatus(int eventStatus) throws SQLException
+	public ArrayList<EventBean> GetEventByStatus(EventBean.Status eventStatus) throws SQLException
 	{
 		final String sql1 = "select * from Events where EventStatus=?";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
-			ps1.setInt(1, eventStatus);
+			ps1.setInt(1, eventStatus.ordinal());
 			ResultSet rs1 = ps1.executeQuery();
 			ArrayList<EventBean> events = new ArrayList<>();
 			while(rs1.next())

@@ -75,7 +75,7 @@ public class DaoTester
 		EventDao eventdao = new EventDao(conn);
 		try
 		{
-			ArrayList<EventBean> events = eventdao.GetEventByStatus(0);
+			ArrayList<EventBean> events = eventdao.GetEventByStatus(EventBean.Status.ongoing);
 			String ret = "get " + events.size() + " events\n";
 			for (EventBean eb : events)
 			{
@@ -118,6 +118,29 @@ public class DaoTester
 		}
 	}
 
+	String AddEvents(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		EventDao eventdao = new EventDao(conn);
+		try
+		{
+			Integer id = eventdao.AddEvent(cont[1]);
+			if (id == null)
+				return "Ê§°Ü";
+			else
+				return "ÐÂÔöeventID£º" + id;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+	
 	String BindEvents(String[] cont)
 	{
 		conn = DaoBase.getConnection(true);
@@ -178,6 +201,34 @@ public class DaoTester
 			picdao.AddPic(Integer.parseInt(cont[1]), Integer.parseInt(cont[2]),
 					cont[3]);
 			return "finish";
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+	
+	String BuyPic(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		PictureDao picdao = new PictureDao(conn);
+		try
+		{
+			HashMap<String, PictureDao.Status> pics = picdao.GetPics(
+					Integer.parseInt(cont[1]), Integer.parseInt(cont[2]));
+			PictureDao.Status oldS = pics.get(cont[1]);
+			PictureDao.Status newS;
+			if(oldS == PictureDao.Status.onSale)
+				newS = PictureDao.Status.hasBuy;
+			else
+				newS = PictureDao.Status.onSale;
+			String ret = picdao.ChgPicStatus(cont[1], newS).name();
+			return "new Status:"+ret;
 		}
 		catch (SQLException e)
 		{
