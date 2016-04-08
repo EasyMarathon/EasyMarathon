@@ -108,12 +108,22 @@ public class BaseTest extends HttpServlet
 					retmsg.setContent(dt.ListEvents(strs));break;
 				case "sys-my":
 					retmsg.setContent(dt.ShowMe(strs));break;
-				case "sys-choose":
+				case "sys-event":
 					retmsg.setContent(dt.ChooseEvents(strs));break;
+				case "sys-+event":
+					retmsg.setContent(dt.AddEvents(strs));break;
 				case "sys-bind":
 					retmsg.setContent(dt.BindEvents(strs));break;
 				case "sys-pic":
 					retmsg.setContent(dt.GetPics(strs));break;
+				case "sys-freepic":
+					retmsg.setContent(dt.GetFreePics(strs));break;
+				case "sys-+pic":
+					retmsg.setContent(dt.PutPic(strs));break;
+				case "sys-buypic":
+					retmsg.setContent(dt.BuyPic(strs));break;
+				case "sys-+fp":
+					retmsg.setContent(dt.PutFreePic(strs));break;
 				case "sys-test":
 					retmsg.setContent("get ans:"+NumTest.test());break;
 				default:
@@ -123,10 +133,10 @@ public class BaseTest extends HttpServlet
 			else
 				retmsg.setContent("你说的是："+msg.getContent());
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			retmsg.setContent("系统报错：\n"+e.getMessage());
 		}
 		
 		ret = gm.makeMsg(retmsg);

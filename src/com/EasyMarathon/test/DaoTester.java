@@ -11,6 +11,7 @@ import com.EasyMarathon.bean.UserBean;
 import com.EasyMarathon.dao.AthleteDao;
 import com.EasyMarathon.dao.DaoBase;
 import com.EasyMarathon.dao.EventDao;
+import com.EasyMarathon.dao.FreePicDao;
 import com.EasyMarathon.dao.PictureDao;
 import com.EasyMarathon.dao.UserDao;
 
@@ -38,6 +39,10 @@ public class DaoTester
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
 		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
 	}
 
 	String ShowMe(String[] cont)
@@ -58,6 +63,10 @@ public class DaoTester
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
 		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
 	}
 
 	String ListEvents(String[] cont)
@@ -66,12 +75,13 @@ public class DaoTester
 		EventDao eventdao = new EventDao(conn);
 		try
 		{
-			ArrayList<EventBean> events = eventdao.GetEventByStatus(0);
+			ArrayList<EventBean> events = eventdao
+					.GetEventByStatus(EventBean.Status.ongoing);
 			String ret = "get " + events.size() + " events\n";
 			for (EventBean eb : events)
 			{
-				ret += "ID:" + eb.getEventID() + "\nName:" + eb.getEventName()
-						+ "\n";
+				ret += "ID:" + eb.getEventID() + ",\tstatus:" + eb.getEventStatus().name()
+						+ "\nName:" + eb.getEventName() + "\n";
 			}
 			return ret;
 		}
@@ -79,6 +89,10 @@ public class DaoTester
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 
@@ -92,12 +106,39 @@ public class DaoTester
 			if (aid == null)
 				return "Î´°ó¶¨";
 			else
-				return "ºÅÂëÅÆ£º"+aid.toString();
+				return "ºÅÂëÅÆ£º" + aid.toString();
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String AddEvents(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		EventDao eventdao = new EventDao(conn);
+		try
+		{
+			Integer id = eventdao.AddEvent(cont[1]);
+			if (id == null)
+				return "Ê§°Ü";
+			else
+				return "ÐÂÔöeventID£º" + id;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 
@@ -119,6 +160,10 @@ public class DaoTester
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
 		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
 	}
 
 	String GetPics(String[] cont)
@@ -127,12 +172,12 @@ public class DaoTester
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			HashMap<String, Integer> pics = picdao.GetPics(
+			HashMap<String, PictureDao.Status> pics = picdao.GetAllPics(
 					Integer.parseInt(cont[1]), Integer.parseInt(cont[2]));
 			String ret = "get " + pics.size() + " pics\n";
-			for (Map.Entry<String, Integer> e : pics.entrySet())
+			for (Map.Entry<String, PictureDao.Status> e : pics.entrySet())
 			{
-				ret += "picID:" + e.getKey() + "\nstatus:" + e.getValue()
+				ret += "picID:" + e.getKey() + "\nstatus:" + e.getValue().name()
 						+ "\n";
 			}
 			return ret;
@@ -141,6 +186,103 @@ public class DaoTester
 		{
 			e.printStackTrace();
 			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String PutPic(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		PictureDao picdao = new PictureDao(conn);
+		try
+		{
+			picdao.AddPic(Integer.parseInt(cont[1]), Integer.parseInt(cont[2]),
+					cont[3]);
+			return "finish";
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String BuyPic(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		PictureDao picdao = new PictureDao(conn);
+		try
+		{
+			PictureDao.Status oldS = picdao.GetPicByPicID(cont[1]);
+			PictureDao.Status newS = null;
+			if (oldS == PictureDao.Status.onSale)
+				newS = PictureDao.Status.hasBuy;
+			else if (oldS == PictureDao.Status.hasBuy)
+				newS = PictureDao.Status.onSale;
+			String ret = picdao.ChgPicStatus(cont[1], newS).name();
+			return "new Status:" + ret;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String PutFreePic(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		FreePicDao fpdao = new FreePicDao(conn);
+		try
+		{
+			fpdao.AddPic(Integer.parseInt(cont[1]), wID, cont[2]);
+			return "finish";
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+	}
+
+	String GetFreePics(String[] cont)
+	{
+		conn = DaoBase.getConnection(true);
+		FreePicDao fpdao = new FreePicDao(conn);
+		try
+		{
+			HashMap<String, Integer> pics = fpdao.GetFreePicsByWechatID(wID);
+			String ret = "get " + pics.size() + " pics\n";
+			for (Map.Entry<String, Integer> e : pics.entrySet())
+			{
+				ret += "picID:" + e.getKey() + "\neventID:" + e.getValue()
+						+ "\n";
+			}
+			return ret;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return "System Error:\n" + e.getMessage();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
 		}
 	}
 }
