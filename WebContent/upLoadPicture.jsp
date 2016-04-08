@@ -45,17 +45,17 @@
 			out.print("用户不同意授权,未获取到用户信息！");
 	%>
 
-	<form enctype="multipart/form-data">
+	<form enctype="multipart/form-data" action="uploadPic" method="post" >
 
 	<div class="htmleaf-container" style="min-height:300px">
 		<div class="container kv-main">
 			<br>
-       		<input id="file-0a" class="file" type="file" multiple data-min-file-count="1">
+       		<input id="file-0a" class="file" type="file" multiple data-min-file-count="1" name="picture.file">
            	<br>
            	
            	<div class="form-group">
 				<label for="name">赛事所在地</label>
-				<select class="form-control">
+				<select class="form-control" name="eventID">
 			         <option>1</option>
 			         <option>2</option>
 			         <option>3</option>

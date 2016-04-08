@@ -12,7 +12,7 @@
     	<action name="uploadPic" class="com.EasyMarathon.action.PicAction" method="uploadPic">
 			<result name="success" >/uploadsuccess.jsp</result>
 			<result name="fail" >/uploadunsuccess.jsp</result>
-			<result name="input">/uploadsuccess.jsp</result>
+			<result name="input">/uploadPic.jsp</result>
 		</action>
     </package>
     

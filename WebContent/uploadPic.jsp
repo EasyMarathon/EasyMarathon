@@ -9,8 +9,8 @@
 <body>
 
 	<h1>上传照片页面</h1>
-	<form action="uploadPic" name="uploadPic" method="post" >
-		<input type="file" name="picture">
+	<form action="uploadPic" name="uploadPic" method="post" enctype="multipart/form-data">
+		<input type="file" name="picture.file">
 		<input type="text" name="eventID">
 		<input type="submit" value="下一步">
 	</form>

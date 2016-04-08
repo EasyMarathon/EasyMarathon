@@ -1,14 +1,26 @@
 package com.EasyMarathon.service;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.EasyMarathon.dao.DaoBase;
 import com.EasyMarathon.dao.PictureDao;
+import com.EasyMarathon.other.ImageMarkLogoByIcon;
 import com.EasyMarathon.other.MD5;
+import com.EasyMarathon.util.NumIdentify;
 
 public class PicService {
-	private PictureDao 		picturedao;
+	
+	Connection conn;
 
 	public String byte2hex(byte[] b) // 二行制转字符串
 	{
@@ -25,57 +37,146 @@ public class PicService {
 		}
 		return hs.toUpperCase();
 	}
+	
+	/*给照片打水印*/
+	public static void watermark(String iconPath, String srcImgPath,String targerPath) {   
+        OutputStream os = null;   
+        
+        try {   
+            Image srcImg = ImageIO.read(new File(srcImgPath));   
+  
+            BufferedImage buffImg = new BufferedImage(srcImg.getWidth(null),   
+                    srcImg.getHeight(null), BufferedImage.TYPE_INT_RGB); 
+            BufferedImage result=null;
+         // 水印图象的路径 水印一般为gif或者png的，这样可设置透明度   
+            ImageIcon imgIcon = new ImageIcon(iconPath);
+            double height=imgIcon.getIconHeight();
+            double width=imgIcon.getIconWidth();
+            double height1=buffImg.getHeight();
+            double width1=buffImg.getWidth();
+            if(height/width>height1/width1)
+            {
+            	height1=height1/width1*width;
+            	width1=width;
+            }
+            else
+            {
+            	width1=width1/height1*height;
+            	height1=height;       	
+            }
+            result = new BufferedImage((int)width1, (int)height1,  
+                    BufferedImage.TYPE_INT_RGB); 
+           // 得到画笔对象    
+            Graphics2D g = result.createGraphics();    
+            g.drawImage(srcImg, 0, 0,(int)width1,(int)height1, null);             
+            // 得到Image对象。   
+            Image img = imgIcon.getImage();     
+            // 表示水印图片的位置   
+            g.drawImage(img, 0, 0, null);     
+            g.dispose();     
+            os = new FileOutputStream(targerPath);   
+            // 生成图片  
+            srcImg.flush();       
+            ImageIO.write(result, "JPG", os);   
+            os.flush();
+            System.out.println("图片完成添加Icon印章。。。。。。");   
+        } catch (Exception e) {   
+            e.printStackTrace();   
+        } finally {   
+            try {   
+                if (null != os)   
+                    os.close();   
+            } catch (Exception e) {   
+                e.printStackTrace();   
+            }   
+        }   
+    }   
+	/*保存原图*/
+	public static void Original(String srcImgPath,String targerPath )
+	{
+		 OutputStream os = null;   
+	        
+	        try {   
+	            Image srcImg = ImageIO.read(new File(srcImgPath));   
+	  
+	            BufferedImage buffImg = new BufferedImage(srcImg.getWidth(null),   
+	            srcImg.getHeight(null), BufferedImage.TYPE_INT_RGB); 
+	            Graphics2D g = buffImg.createGraphics();   
+	            
+	            g.drawImage(srcImg, 0, 0,srcImg.getWidth(null),srcImg.getHeight(null), null);   
+	  
+	            g.dispose();   
+	            os = new FileOutputStream(targerPath);   
+	            srcImg.flush();       
+	            ImageIO.write(buffImg, "JPG", os);   
+	            os.flush();
+	            System.out.println("图片完成保存原图。。。。。。");   
+	        } catch (Exception e) {   
+	            e.printStackTrace();   
+	        } finally {   
+	            try {   
+	                if (null != os)   
+	                    os.close();   
+	            } catch (Exception e) {   
+	                e.printStackTrace();   
+	            }   
+	        }   
+	}
 
-	public boolean uploadPicService(File picture, int eventID) throws IOException {
-		picturedao = null;
-		int aID = 0;
-		String path = ServletActionContext.getServletContext().getRealPath("/");
+	public boolean uploadPicService(File picture, int eventID)  {
+		conn = DaoBase.getConnection(true);
+		PictureDao picturedao=new PictureDao(conn);
+		
+		
+		String srcImgPath=picture.getAbsolutePath();//已经包含照片名
+		//System.out.println(srcImgPath);
+/*		NumIdentify numidentify=new NumIdentify();
+		int aID = numidentify.GetID(srcImgPath);
+		System.out.println(aID);
+		if(aID==-1)
+		{
+			System.out.println("图片未识别");
+			return false;
+		}*/
+		int aID=120;
+		String iconPath=ServletActionContext.getServletContext().getRealPath("/")+"/icon/EasyMarathon.png";
+		String path=ServletActionContext.getServletContext().getRealPath("/")+"imageCamera"+"/"+eventID+"/";
+		try {
+			File fileLocation = new File(path);
+			if (!fileLocation.exists())
+				fileLocation.mkdirs();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String picID = null;
+		MD5 md5 = new MD5();
+		String imgStr=null;
+		try{
 		FileInputStream fis = new FileInputStream(picture);
 		byte[] bytes = new byte[fis.available()];
+		imgStr = byte2hex(bytes);
 		fis.read(bytes);
 		fis.close();
-		String imgStr = byte2hex(bytes);
-		MD5 md5 = new MD5();
-		String picID = null;
-		try {
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
 			// 对密码进行MD5加密
+		try{
 			picID = md5.md5Encode(imgStr);
-					picturedao.AddPic(eventID, aID, picID);
+			picturedao.AddPic(eventID, aID, picID);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		try {
-			System.out.println(picture);
-			InputStream in = new FileInputStream(picture);
-			String dir = path + picID + "/";
-			try {
-				File fileLocation = new File(dir);
-				if (!fileLocation.exists())
-					fileLocation.mkdirs();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			String fileName1 = "initial.jpg";
-			String fileName2 = "watermark.jpg";
-			File uploadFile1 = new File(dir, fileName1);
-			File uploadFile2 = new File(dir, fileName2);
-			OutputStream out1 = new FileOutputStream(uploadFile1);
-			OutputStream out2 = new FileOutputStream(uploadFile2);
-			byte[] buffer = new byte[1024 * 1024];
-			int length;
-			while ((length = in.read(buffer)) > 0) {
-				out1.write(buffer, 0, length);
-				out2.write(buffer, 0, length);
-			}
-			in.close();
-			out1.close();
-			out2.close();
+			
+		String pathInitial = path + "initial"+"/"+picID+".jpg";
+		String pathwater=path+"watermark"+"/"+picID+".jpg";
+		Original(srcImgPath,srcImgPath);
+        watermark(iconPath, srcImgPath, pathwater);
+        DaoBase.close(conn, null, null);
 			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("upload picture failed");
-			return false;
-		}
+	
 	}
 
 }
