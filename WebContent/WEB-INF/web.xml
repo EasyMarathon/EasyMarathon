@@ -13,7 +13,7 @@
   </filter>
   <filter-mapping>
     <filter-name>struts2</filter-name>
-    <url-pattern>/bg/*</url-pattern>
+    <url-pattern>/bg/</url-pattern>
   </filter-mapping>
   <context-param>
     <param-name>appid</param-name>
