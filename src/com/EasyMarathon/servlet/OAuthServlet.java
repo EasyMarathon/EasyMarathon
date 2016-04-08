@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.EasyMarathon.bean.SNSUserInfo;
 import com.EasyMarathon.bean.WeixinOauth2Token;
-import com.EasyMarathon.util.AdvancedUtil;
+import com.EasyMarathon.Util.AdvancedUtil;
 
 /**
  * 授权后的回调请求处理

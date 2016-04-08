@@ -1,4 +1,4 @@
-package com.EasyMarathon.util;
+package com.EasyMarathon.Util;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

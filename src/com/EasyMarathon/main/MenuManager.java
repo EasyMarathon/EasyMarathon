@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.EasyMarathon.Button.*;
 import com.EasyMarathon.token.Token;
-import com.EasyMarathon.util.CommonUtil;
-import com.EasyMarathon.util.MenuUtil;
+import com.EasyMarathon.Util.CommonUtil;
+import com.EasyMarathon.Util.MenuUtil;
 
 /**
  * 菜单管理器类

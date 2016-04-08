@@ -1,4 +1,4 @@
-package com.EasyMarathon.util;
+package com.EasyMarathon.Util;
 
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;

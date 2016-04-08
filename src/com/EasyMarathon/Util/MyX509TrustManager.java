@@ -1,4 +1,4 @@
-package com.EasyMarathon.util;
+package com.EasyMarathon.Util;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;

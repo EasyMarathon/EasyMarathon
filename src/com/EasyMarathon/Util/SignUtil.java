@@ -1,4 +1,4 @@
-package com.EasyMarathon.util;
+package com.EasyMarathon.Util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
