@@ -2,8 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>EasyMarathon</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>upLoadPicture.jsp</welcome-file>
+    <welcome-file>upLoadPicture.jsp</welcome-file>
   </welcome-file-list>
   <filter>
     <filter-name>struts2</filter-name>
@@ -23,4 +23,15 @@
     <param-name>appsecret</param-name>
     <param-value>901266e75a806a5e9872a5e17a95eeb1</param-value>
   </context-param>
+  
+	<servlet>
+		<servlet-name>oauthServlet</servlet-name>
+		<servlet-class>
+			com.EasyMarathon.servlet.OAuthServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>oauthServlet</servlet-name>
+		<url-pattern>/oauthServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
