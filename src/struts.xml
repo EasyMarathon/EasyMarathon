@@ -10,6 +10,11 @@
 
     <package name="strutsBean"  extends="struts-default" namespace="/">
     	<action name="uploadPic" class="com.EasyMarathon.action.PicAction" method="uploadPic">
+		<result name="success" >/uploadsuccess.jsp</result>
+			<result name="fail" >/uploadunsuccess.jsp</result>
+			<result name="input">/uploadPic.jsp</result>
+		</action>
+		<action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction" method="uploadPicforUser">
 			<result name="success" >/uploadsuccess.jsp</result>
 			<result name="fail" >/uploadunsuccess.jsp</result>
 			<result name="input">/uploadPic.jsp</result>

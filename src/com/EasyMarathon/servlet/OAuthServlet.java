@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.EasyMarathon.bean.SNSUserInfo;
 import com.EasyMarathon.bean.WeixinOauth2Token;
@@ -25,7 +26,7 @@ public class OAuthServlet extends HttpServlet
 	{
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-
+		HttpSession session=request.getSession();
 		// 用户同意授权后，能获取到code
 		String code = request.getParameter("code");
 
@@ -46,10 +47,13 @@ public class OAuthServlet extends HttpServlet
 					openId);
 
 			// 设置要传递的参数
+			
+			//session.setAttribute("snsUserInfo", snsUserInfo);
 			request.setAttribute("snsUserInfo", snsUserInfo);
 		}
 		// 跳转到index.jsp
-		request.getRequestDispatcher("upLoadPicture.jsp").forward(request,
+		
+		request.getRequestDispatcher("GoUploadPicforUser").forward(request,
 				response);
 	}
 }

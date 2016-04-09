@@ -94,60 +94,124 @@ public class PicService {
 	/*保存原图*/
 	public static void Original(String srcImgPath,String targerPath )
 	{
-		 OutputStream os = null;   
-	        
-	        try {   
-	            Image srcImg = ImageIO.read(new File(srcImgPath));   
-	  
-	            BufferedImage buffImg = new BufferedImage(srcImg.getWidth(null),   
-	            srcImg.getHeight(null), BufferedImage.TYPE_INT_RGB); 
-	            Graphics2D g = buffImg.createGraphics();   
-	            
-	            g.drawImage(srcImg, 0, 0,srcImg.getWidth(null),srcImg.getHeight(null), null);   
-	  
-	            g.dispose();   
-	            os = new FileOutputStream(targerPath);   
-	            srcImg.flush();       
-	            ImageIO.write(buffImg, "JPG", os);   
-	            os.flush();
-	            System.out.println("图片完成保存原图。。。。。。");   
-	        } catch (Exception e) {   
-	            e.printStackTrace();   
-	        } finally {   
-	            try {   
-	                if (null != os)   
-	                    os.close();   
-	            } catch (Exception e) {   
-	                e.printStackTrace();   
-	            }   
-	        }   
+        OutputStream os = null;   
+        
+        try {   
+            Image srcImg = ImageIO.read(new File(srcImgPath));   
+  
+            BufferedImage buffImg = new BufferedImage(srcImg.getWidth(null),   
+                    srcImg.getHeight(null), BufferedImage.TYPE_INT_RGB); 
+            Graphics2D g = buffImg.createGraphics();   
+            
+            g.drawImage(srcImg, 0, 0,srcImg.getWidth(null),srcImg.getHeight(null), null);   
+  
+            g.dispose();   
+            os = new FileOutputStream(targerPath);   
+            // 生成图片  
+            srcImg.flush();
+           
+            ImageIO.write(buffImg, "JPG", os);   
+            os.flush();
+            System.out.println("图片完成添加Icon印章。。。。。。");   
+        } catch (Exception e) {   
+            e.printStackTrace();   
+        } finally {   
+            try {   
+                if (null != os)   
+                    os.close();   
+            } catch (Exception e) {   
+                e.printStackTrace();   
+            }   
+        } 
 	}
 
-	public boolean uploadPicService(File picture, int eventID)  {
+	public boolean uploadPicService(File picture, String eventId)  {
 		conn = DaoBase.getConnection(true);
 		PictureDao picturedao=new PictureDao(conn);
 		
-		
+		int eventID=Integer.parseInt(eventId);		
 		String srcImgPath=picture.getAbsolutePath();//已经包含照片名
 		//System.out.println(srcImgPath);
-/*		NumIdentify numidentify=new NumIdentify();
+		NumIdentify numidentify=new NumIdentify();
 		int aID = numidentify.GetID(srcImgPath);
 		System.out.println(aID);
 		if(aID==-1)
 		{
 			System.out.println("图片未识别");
 			return false;
-		}*/
-		int aID=120;
-		String iconPath=ServletActionContext.getServletContext().getRealPath("/")+"/icon/EasyMarathon.png";
+		}
+		//int aID=120;
+		String iconPath=ServletActionContext.getServletContext().getRealPath("/")+"icon/EasyMarathon.png";
 		String path=ServletActionContext.getServletContext().getRealPath("/")+"imageCamera"+"/"+eventID+"/";
+		System.out.println("摄影师目录："+path);
+		System.out.println("水印目录："+iconPath);
+
+		String picID = null;
+		MD5 md5 = new MD5();
+		String imgStr=null;
+		try{
+		FileInputStream fis = new FileInputStream(picture);
+		byte[] bytes = new byte[fis.available()];
+		imgStr = byte2hex(bytes);
+		fis.read(bytes);
+		fis.close();
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+			// 对密码进行MD5加密
+		try{
+			picID = md5.md5Encode(imgStr);
+			//picturedao.AddPic(eventID, aID, picID);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		String pathInitial = path + "initial"+"/";
+		String pathwater=path+"watermark"+"/";
 		try {
-			File fileLocation = new File(path);
+			File fileLocation = new File(pathInitial);
 			if (!fileLocation.exists())
 				fileLocation.mkdirs();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		try {
+			File fileLocation = new File(pathwater);
+			if (!fileLocation.exists())
+				fileLocation.mkdirs();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		pathInitial=pathInitial+picID+".jpg";
+		pathwater=pathwater+picID+".jpg";
+		Original(srcImgPath,pathInitial);
+        watermark(iconPath, srcImgPath, pathwater);
+        DaoBase.close(conn, null, null);
+			return true;
+	
+	}
+	
+	public boolean uploadPicforUserService(File picture, String eventId)  {
+		conn = DaoBase.getConnection(true);
+		PictureDao picturedao=new PictureDao(conn);
+		
+		int eventID=Integer.parseInt(eventId);		
+		String srcImgPath=picture.getAbsolutePath();//已经包含照片名
+		//System.out.println(srcImgPath);
+		NumIdentify numidentify=new NumIdentify();
+		int aID = numidentify.GetID(srcImgPath);
+		System.out.println(aID);
+		if(aID==-1)
+		{
+			System.out.println("图片未识别");
+			return false;
+		}
+		//int aID=120;
+		String path=ServletActionContext.getServletContext().getRealPath("/")+"imageCamera"+"/"+eventID+"/";
+		System.out.println("摄影师目录："+path);
+	
 		String picID = null;
 		MD5 md5 = new MD5();
 		String imgStr=null;
@@ -170,10 +234,16 @@ public class PicService {
 			e.printStackTrace();
 		}
 			
-		String pathInitial = path + "initial"+"/"+picID+".jpg";
-		String pathwater=path+"watermark"+"/"+picID+".jpg";
-		Original(srcImgPath,srcImgPath);
-        watermark(iconPath, srcImgPath, pathwater);
+		String pathInitial = path + "initial"+"/";
+		try {
+			File fileLocation = new File(pathInitial);
+			if (!fileLocation.exists())
+				fileLocation.mkdirs();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		pathInitial=pathInitial+picID+".jpg";		
+		Original(srcImgPath,pathInitial);
         DaoBase.close(conn, null, null);
 			return true;
 	

@@ -12,7 +12,7 @@ public class PicAction
 {
 	private static final long serialVersionUID = 1L;
 	private PicBean picture;
-	private int eventID;
+	private String eventID;
 
 	public PicBean getPicture() {
 		return picture;
@@ -20,10 +20,10 @@ public class PicAction
 	public void setPicture(PicBean picture) {
 		this.picture = picture;
 	}
-	public int getEventID() {
+	public String getEventID() {
 		return eventID;
 	}
-	public void setEventID(int eventID) {
+	public void setEventID(String eventID) {
 		this.eventID = eventID;
 	}
 	public String uploadPic(){
@@ -31,6 +31,15 @@ public class PicAction
 		PicService picservice = new PicService();
 		
 		if(picservice.uploadPicService(picture.getFile(),eventID))
+		    return "success";
+		else
+			return "fail";
+	}
+	public String uploadPicforUser(){
+		//System.out.println(picture.getFile().getAbsolutePath());
+		PicService picservice = new PicService();
+		
+		if(picservice.uploadPicforUserService(picture.getFile(),eventID))
 		    return "success";
 		else
 			return "fail";
