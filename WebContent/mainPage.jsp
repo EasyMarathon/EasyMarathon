@@ -247,8 +247,6 @@
                           <i class="fa fa-angle-left text"></i>
                           <i class="fa fa-angle-down text-active"></i>
                         </span>
-                        <i class="icon-grid icon">
-                        </i>
                         <span>住宿</span>
                       </a>
                       <ul class="nav dk text-sm">
@@ -431,7 +429,7 @@
                           <a href="#"><img src="PersonCenter/images/o4.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
-                          <a href="#" class="text-ellipsis">Fermentum diam</a>
+                          <a href="#" class="text-ellipsis">Beijing Marathon</a>
                           <a href="#" class="text-ellipsis text-xs text-muted">Nisa Colen</a>
                         </div>
                       </div>
@@ -465,7 +463,7 @@
                           <a href="#"><img src="PersonCenter/images/o5.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
-                          <a href="#" class="text-ellipsis">Habitant</a>
+                          <a href="#" class="text-ellipsis">Shanghai Marathon</a>
                           <a href="#" class="text-ellipsis text-xs text-muted">Dan Doorack</a>
                         </div>
                       </div>
