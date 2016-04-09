@@ -34,20 +34,10 @@ public class MenuManager
 		btn12.setType("view");
 		btn12.setUrl("http://120.27.106.188/easyrun/mainPage.jsp");
 
-		ViewButton btn21 = new ViewButton();
-		btn21.setName("杭州马拉松");
-		btn21.setType("view");
-		btn21.setUrl("http://www.hzim.org/");
-
-		ViewButton btn22 = new ViewButton();
-		btn22.setName("上海国际半程马拉松赛");
-		btn22.setType("view");
-		btn22.setUrl("http://www.shmarathon.com");
-
-		ViewButton btn23 = new ViewButton();
-		btn23.setName("其他赛事");
-		btn23.setType("view");
-		btn23.setUrl("http://m.taobao.com");
+		ClickButton btn21 = new ClickButton();
+		btn21.setName("照片查询");
+		btn21.setType("click");
+		btn21.setKey("findPicture");
 
 		ClickButton btn31 = new ClickButton();
 		btn31.setName("热门话题");
@@ -67,17 +57,18 @@ public class MenuManager
 		ComplexButton mainBtn1 = new ComplexButton();
 		mainBtn1.setName("族友专区");
 		mainBtn1.setSub_button(new Button[] { btn11, btn12 });
-
+		/*
 		ComplexButton mainBtn2 = new ComplexButton();
 		mainBtn2.setName("照片查询");
 		mainBtn2.setSub_button(new Button[] { btn21, btn22, btn23 });
+		*/
 
 		ComplexButton mainBtn3 = new ComplexButton();
 		mainBtn3.setName("易跑部落");
 		mainBtn3.setSub_button(new Button[] { btn31, btn32, btn33 });
 
 		Menu menu = new Menu();
-		menu.setButton(new Button[] { mainBtn1, mainBtn2, mainBtn3 });
+		menu.setButton(new Button[] { mainBtn1, btn21, mainBtn3 });
 
 		return menu;
 	}
