@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="PersonCenter/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="PersonCenter/css/animate.css" type="text/css" />
   <link rel="stylesheet" href="PersonCenter/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="PersonCenter/css/font-awesome-ie7.min.css">
   <link rel="stylesheet" href="PersonCenter/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="PersonCenter/css/font.css" type="text/css" />
   <link rel="stylesheet" href="PersonCenter/css/app.css" type="text/css" />  
@@ -130,25 +131,21 @@
                     <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">跑城装备</li>
                     <li>
                       <a href="">
-                        <i class="icon-disc icon text-success"></i>
                         <span class="font-bold">服饰</span>
                       </a>
                     </li>
                     <li>
                       <a href="">
-                        <i class="icon-music-tone-alt icon text-info"></i>
                         <span class="font-bold">跑鞋</span>
                       </a>
                     </li>
                     <li>
                       <a href="">
-                        <i class="fa fa-angellist"></i>
                         <span class="font-bold">潮品</span>
                       </a>
                     </li>
                     <li>
                       <a href="events.html">
-                        <i class="icon-drawer icon text-primary-lter"></i>
                         <b class="badge bg-primary pull-right">6</b>
                         <span class="font-bold">新品上市</span>
                       </a>
@@ -160,19 +157,16 @@
                     	免费照片</li>
                     <li>
                       <a href="index.html">
-                        <i class="icon-disc icon text-success"></i>
                         <span class="font-bold">风景</span>
                       </a>
                     </li>
                     <li>
                       <a href="genres.html">
-                        <i class="icon-music-tone-alt icon text-info"></i>
                         <span class="font-bold">人物</span>
                       </a>
                     </li>
                     <li>
                       <a href="listen.html">
-                        <i class="icon-list icon  text-info-dker"></i>
                         <span class="font-bold">摄影师作品</span>
                       </a>
                     </li>
@@ -188,29 +182,24 @@
                           <i class="fa fa-angle-left text"></i>
                           <i class="fa fa-angle-down text-active"></i>
                         </span>
-                        <i class="icon-screen-desktop icon">
-                        </i>
                         <span>美食</span>
                       </a>
                       <ul class="nav dk text-sm">
                         <li >
                           <a href="" class="auto">                                                        
                             <i class="fa fa-angle-right text-xs"></i>
-
                             <span>中餐</span>
                           </a>
                         </li>
                         <li >
-                          <a href="" class="auto">                                                        
-                            <i class="fa fa-angle-right text-xs"></i>
-
+                          <a href="" class="auto"> 
+                          	<i class="fa fa-angle-right text-xs"></i>                                                       
                             <span>西餐</span>
                           </a>
                         </li>
                         <li >
                           <a href="" class="auto">                                                        
                             <i class="fa fa-angle-right text-xs"></i>
-
                             <span>甜点</span>
                           </a>
                         </li>
@@ -229,8 +218,6 @@
                           <i class="fa fa-angle-left text"></i>
                           <i class="fa fa-angle-down text-active"></i>
                         </span>
-                        <i class="icon-chemistry icon">
-                        </i>
                         <span>交通</span>
                       </a>
                       <ul class="nav dk text-sm">
@@ -299,7 +286,7 @@
               <section class="vbox">
                 <section class="scrollable padder-lg w-f-md" id="bjax-target">
                   <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin" ><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
-                  <h2 class="font-thin m-b">Photo
+                  <h2 class="font-thin m-b">赛事照片
                     <span class="bar1 a1 bg-primary lter"></span>
                     <span class="bar2 a2 bg-info lt"></span>
                     <span class="bar3 a3 bg-success"></span>
@@ -335,7 +322,7 @@
                               </a>
                             </div>
                           </div>
-                          <a href="#"><img src="PersonCenter/images/p1.jpg" alt="" class="r r-2x img-full"></a>
+                          <a href="#"><img src="PersonCenter/images/o7.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
                           <a href="#" class="text-ellipsis">Morbi id neque quam liquam sollicitudin</a>
@@ -372,7 +359,7 @@
                               </a>
                             </div>
                           </div>
-                          <a href="#"><img src="PersonCenter/images/p3.jpg" alt="" class="r r-2x img-full"></a>
+                          <a href="#"><img src="PersonCenter/images/o2.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
                           <a href="#" class="text-ellipsis">Morbi id neque quam liquam sollicitudin</a>
@@ -409,7 +396,7 @@
                               <i class="fa fa-bookmark i-lg"></i>
                             </span>
                           </div>
-                          <a href="#"><img src="PersonCenter/images/p4.jpg" alt="" class="r r-2x img-full"></a>
+                          <a href="#"><img src="PersonCenter/images/o11.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
                           <a href="#" class="text-ellipsis">Tincidunt libero</a>
@@ -441,7 +428,7 @@
                               </a>
                             </div>
                           </div>
-                          <a href="#"><img src="PersonCenter/images/p5.jpg" alt="" class="r r-2x img-full"></a>
+                          <a href="#"><img src="PersonCenter/images/o4.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
                           <a href="#" class="text-ellipsis">Fermentum diam</a>
@@ -475,7 +462,7 @@
                               </a>
                             </div>
                           </div>                          
-                          <a href="#"><img src="PersonCenter/images/p6.jpg" alt="" class="r r-2x img-full"></a>
+                          <a href="#"><img src="PersonCenter/images/o5.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
                           <a href="#" class="text-ellipsis">Habitant</a>
@@ -510,74 +497,11 @@
                           <div class="top">
                             <span class="pull-right m-t-sm m-r-sm badge bg-white">12</span>
                           </div>
-                          <a href="#"><img src="PersonCenter/images/p7.jpg" alt="" class="r r-2x img-full"></a>
+                          <a href="#"><img src="PersonCenter/images/o6.jpg" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
                           <a href="#" class="text-ellipsis">Vivamus vel tincidunt libero</a>
                           <a href="#" class="text-ellipsis text-xs text-muted">Ligula H</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                      <div class="item">
-                        <div class="pos-rlt">
-                          <div class="item-overlay opacity r r-2x bg-black">
-                            <div class="text-info padder m-t-sm text-sm">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star-o text-muted"></i>
-                            </div>
-                            <div class="center text-center m-t-n">
-                              <a href="#"><i class="icon-control-play i-2x"></i></a>
-                            </div>
-                            <div class="bottom padder m-b-sm">
-                              <a href="#" class="pull-right">
-                                <i class="fa fa-heart-o"></i>
-                              </a>
-                              <a href="#">
-                                <i class="fa fa-plus-circle"></i>
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#"><img src="PersonCenter/images/p8.jpg" alt="" class="r r-2x img-full"></a>
-                        </div>
-                        <div class="padder-v">
-                          <a href="#" class="text-ellipsis">Aliquam sollicitudin venenati</a>
-                          <a href="#" class="text-ellipsis text-xs text-muted">James East</a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                      <div class="item">
-                        <div class="pos-rlt">
-                          <div class="item-overlay opacity r r-2x bg-black">
-                            <div class="text-info padder m-t-sm text-sm">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star-o text-muted"></i>
-                            </div>
-                            <div class="center text-center m-t-n">
-                              <a href="#"><i class="icon-control-play i-2x"></i></a>
-                            </div>
-                            <div class="bottom padder m-b-sm">
-                              <a href="#" class="pull-right">
-                                <i class="fa fa-heart-o"></i>
-                              </a>
-                              <a href="#">
-                                <i class="fa fa-plus-circle"></i>
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#"><img src="PersonCenter/images/p9.jpg" alt="" class="r r-2x img-full"></a>
-                        </div>
-                        <div class="padder-v">
-                          <a href="#" class="text-ellipsis">Lementum ligula vitae</a>
-                          <a href="#" class="text-ellipsis text-xs text-muted">Lauren Taylor</a>
                         </div>
                       </div>
                     </div>
