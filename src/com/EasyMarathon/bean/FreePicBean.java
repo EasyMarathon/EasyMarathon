@@ -2,13 +2,11 @@ package com.EasyMarathon.bean;
 
 public class FreePicBean
 {
-	public static enum Status
-	{
-		ongoing, finish;
-	}
 	private int eventID = -1;
-	private String eventName = "";
-	private Status eventStatus;
+	private String wechatID = "";
+	private String picID = "";
+	private int downloadCnt = -1;
+	private long upTime = -1;
 
 	public int getEventID()
 	{
@@ -20,29 +18,46 @@ public class FreePicBean
 		this.eventID = eventID;
 	}
 
-	public String getEventName()
+	public String getWechatID()
 	{
-		return eventName;
+		return wechatID;
 	}
 
-	public void setEventName(String eventName)
+	public void setWechatID(String wechatID)
 	{
-		this.eventName = eventName;
+		this.wechatID = wechatID;
 	}
 
-	public Status getEventStatus()
+	public String getPicID()
 	{
-		return eventStatus;
+		return picID;
 	}
 
-	public void setEventStatus(Status eventStatus)
+	public void setPicID(String picID)
 	{
-		this.eventStatus = eventStatus;
+		this.picID = picID;
 	}
 
-	public void setEventStatus(int eventStatus)
+	public int getDownloadCnt()
 	{
-		this.eventStatus = Status.values()[eventStatus];
+		return downloadCnt;
 	}
+
+	public void setDownloadCnt(int downloadCnt)
+	{
+		this.downloadCnt = downloadCnt;
+	}
+
+	public long getUpTime()
+	{
+		return upTime;
+	}
+
+	public void setUpTime(long upTime)
+	{
+		this.upTime = upTime;
+	}
+
+	
 	
 }

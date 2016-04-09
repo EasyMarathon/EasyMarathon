@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import com.EasyMarathon.bean.FreePicBean;
 
 public class FreePicDao
 {
@@ -16,38 +19,53 @@ public class FreePicDao
 		conn = c;
 	}
 
-	public HashMap<String, String> GetFreePicsByEventID(int eventID)
+	public ArrayList<FreePicBean> GetFreePicsByEventID(int eventID)
 			throws SQLException
 	{
-		final String sql1 = "select PicID,WechatID from FreePics where EventID=? order by upTime DESC";
+		final String sql1 = "select PicID,WechatID,DownloadCnt,upTime from FreePics where EventID=? order by upTime DESC";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
 			ps1.setInt(1, eventID);
 			ResultSet rs1 = ps1.executeQuery();
-			HashMap<String, String> pics = new HashMap<>();
+			ArrayList<FreePicBean> pics = new ArrayList<>();
 
 			while (rs1.next())
 			{
-				pics.put(rs1.getString(1), rs1.getString(2));
+				FreePicBean fp = new FreePicBean();
+				fp.setEventID(eventID);
+				fp.setPicID(rs1.getString(1));
+				fp.setWechatID(rs1.getString(2));
+				fp.setDownloadCnt(rs1.getInt(3));
+				fp.setUpTime(rs1.getLong(4));
+				
+				pics.add(fp);
 			}
 
 			return pics;
 		}
 	}
 
-	public HashMap<String, Integer> GetFreePicsByWechatID(String wechatID)
+	public ArrayList<FreePicBean> GetFreePicsByWechatID(String wechatID)
 			throws SQLException
 	{
-		final String sql1 = "select PicID,EventID from FreePics where WechatID=? order by upTime DESC";
+		final String sql1 = "select PicID,EventID,DownloadCnt,upTime from FreePics where WechatID=? order by upTime DESC";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
 			ps1.setString(1, wechatID);
 			ResultSet rs1 = ps1.executeQuery();
-			HashMap<String, Integer> pics = new HashMap<>();
+
+			ArrayList<FreePicBean> pics = new ArrayList<>();
 
 			while (rs1.next())
 			{
-				pics.put(rs1.getString(1), rs1.getInt(2));
+				FreePicBean fp = new FreePicBean();
+				fp.setWechatID(wechatID);
+				fp.setPicID(rs1.getString(1));
+				fp.setEventID(rs1.getInt(2));
+				fp.setDownloadCnt(rs1.getInt(3));
+				fp.setUpTime(rs1.getLong(4));
+				
+				pics.add(fp);
 			}
 
 			return pics;
