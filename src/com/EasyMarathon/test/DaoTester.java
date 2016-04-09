@@ -31,7 +31,11 @@ public class DaoTester
 		UserDao userdao = new UserDao(conn);
 		try
 		{
-			UserBean user = userdao.AddUser(wID, cont[1], cont[2]);
+			UserBean user = new UserBean();
+			user.setWechatID(wID);
+			user.setUserName(cont[1]);
+			user.setCelphone(cont[2]);
+			user = userdao.AddUser(user);
 			return "Success with openID:\n" + user.getWechatID();
 		}
 		catch (SQLException e)
