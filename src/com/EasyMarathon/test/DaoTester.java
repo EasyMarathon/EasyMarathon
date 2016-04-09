@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.EasyMarathon.bean.EventBean;
+import com.EasyMarathon.bean.FreePicBean;
 import com.EasyMarathon.bean.UserBean;
 import com.EasyMarathon.dao.AthleteDao;
 import com.EasyMarathon.dao.DaoBase;
@@ -31,7 +32,11 @@ public class DaoTester
 		UserDao userdao = new UserDao(conn);
 		try
 		{
-			UserBean user = userdao.AddUser(wID, cont[1], cont[2]);
+			UserBean user = new UserBean();
+			user.setWechatID(wID);
+			user.setUserName(cont[1]);
+			user.setCelphone(cont[2]);
+			user = userdao.AddUser(user);
 			return "Success with openID:\n" + user.getWechatID();
 		}
 		catch (SQLException e)
@@ -266,11 +271,11 @@ public class DaoTester
 		FreePicDao fpdao = new FreePicDao(conn);
 		try
 		{
-			HashMap<String, Integer> pics = fpdao.GetFreePicsByWechatID(wID);
+			ArrayList<FreePicBean> pics = fpdao.GetFreePicsByWechatID(wID);
 			String ret = "get " + pics.size() + " pics\n";
-			for (Map.Entry<String, Integer> e : pics.entrySet())
+			for (FreePicBean fp : pics)
 			{
-				ret += "picID:" + e.getKey() + "\neventID:" + e.getValue()
+				ret += "picID:" + fp.getPicID() + "\neventID:" + fp.getEventID()
 						+ "\n";
 			}
 			return ret;

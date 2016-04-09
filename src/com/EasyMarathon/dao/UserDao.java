@@ -31,25 +31,45 @@ public class UserDao
 			user.setWechatID(wechatID);
 			user.setUserName(rs1.getString("UserName"));
 			user.setCelphone(rs1.getString("Celphone"));
+			user.setEmail(rs1.getString("Email"));
+			user.setBirth(rs1.getDate("Birth"));
+			user.setGender(rs1.getInt("Gender"));
 			return user;
 		}
 	}
 
-	public UserBean AddUser(String wechatID, String userName, String celphone) throws SQLException
+	public UserBean AddUser(UserBean user) throws SQLException
 	{
-		final String sql1 = "insert into Users (WechatID,UserName,Celphone) values(?,?,?)";
+		final String sql1 = "insert into Users (WechatID,UserName,Celphone,Email,Birth,Gender) values(?,?,?,?,?,?)";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
-			ps1.setString(1, wechatID);
-			ps1.setString(2, userName);
-			ps1.setString(3, celphone);
+			ps1.setString(1, user.getWechatID());
+			ps1.setString(2, user.getUserName());
+			ps1.setString(3, user.getCelphone());
+			ps1.setString(4, user.getEmail());
+			ps1.setDate(5, user.getBirth());
+			ps1.setInt(6, user.getGender().ordinal());
 			
 			ps1.executeUpdate();
 
-			UserBean user = new UserBean();
-			user.setWechatID(wechatID);
-			user.setUserName(userName);
-			user.setCelphone(celphone);
+			return user;
+		}
+	}
+	
+	public UserBean UpdUser(UserBean user) throws SQLException
+	{
+		final String sql1 = "update Users set UserName=?,Celphone=?,Email=?,Birth=?,Gender=? where WechatID=?";
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
+		{
+			ps1.setString(1, user.getUserName());
+			ps1.setString(2, user.getCelphone());
+			ps1.setString(3, user.getEmail());
+			ps1.setDate(4, user.getBirth());
+			ps1.setInt(5, user.getGender().ordinal());
+			ps1.setString(6, user.getWechatID());
+			
+			ps1.executeUpdate();
+
 			return user;
 		}
 	}
