@@ -163,7 +163,7 @@ public class PicService {
 			// 对密码进行MD5加密
 		try{
 			picID = md5.md5Encode(imgStr);
-			//picturedao.AddPic(eventID, aID, picID);
+			picturedao.AddPic(eventID, aID, picID);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

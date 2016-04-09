@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -21,6 +22,7 @@ import com.EasyMarathon.dao.AthleteDao;
 import com.EasyMarathon.dao.DaoBase;
 import com.EasyMarathon.dao.EventDao;
 import com.EasyMarathon.dao.PictureDao;
+import com.EasyMarathon.dao.PictureDao.Status;
 import com.EasyMarathon.test.DoMsg;
 import com.EasyMarathon.util.SignUtil;
 @WebServlet(urlPatterns = "/ReturnPic", initParams =
@@ -77,6 +79,37 @@ public class ReturnPic {
 		out = null;
 	}
 	
+	public HashMap<String, Status> fun(String wechatID,int eventID)
+	{
+		conn = DaoBase.getConnection(true);
+		AthleteDao athletedao=new AthleteDao(conn);
+		HashMap<String, Status> pictures=new HashMap<String, Status>();
+		try
+		{
+			
+			Integer athleteID=athletedao.GetAthleteID(wechatID, eventID);
+			if(athleteID==null)
+			{
+				System.out.println("«Î∞Û∂®’À∫≈");
+				return null;
+			}
+			else
+			{
+				PictureDao picturedao=new PictureDao(conn);			
+				pictures=picturedao.GetAllPics(athleteID, eventID);				
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);		
+		}
+		
+		return pictures;
+	}
 	public String SimpleReply(HttpServletRequest request)
 	{
 		DoMsg gm = new DoMsg();
@@ -102,14 +135,14 @@ public class ReturnPic {
 			int athleteID=Integer.parseInt(s2);
 			if(EventExist(eventID))
 			{
-				if(AthleteExist(athleteID))
+				/*if(AthleteExist(athleteID))
 				{
 					ret= "picture";
 				}
 				else
 				{
 					ret= "you need binding";
-				}
+				}*/
 			}
 			else
 			{
@@ -151,29 +184,7 @@ public class ReturnPic {
 		return true;	
 	}
 	
-	public boolean AthleteExist(int athleteID)
-	{
-		/*conn = DaoBase.getConnection(true);
-		AthleteDao athletedao=new AthleteDao(conn);
-		try
-		{
-			EventBean event = athletedao.
-			if(event==null)
-			{
-				DaoBase.close(conn, null, null);
-				return false;
-			}	
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			DaoBase.close(conn, null, null);		
-		}*/
-		return true;	
-	}
+
 	
 	
 
