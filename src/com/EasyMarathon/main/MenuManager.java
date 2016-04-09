@@ -29,10 +29,10 @@ public class MenuManager
 						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FoauthServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
-		ClickButton btn12 = new ClickButton();
+		ViewButton btn12 = new ViewButton();
 		btn12.setName("个人中心");
-		btn12.setType("click");
-		btn12.setKey("personalInfo");
+		btn12.setType("view");
+		btn12.setUrl("http://120.27.106.188/easyrun/mainPage.jsp");
 
 		ViewButton btn21 = new ViewButton();
 		btn21.setName("杭州马拉松");
@@ -96,9 +96,8 @@ public class MenuManager
 		{
 			// 创建菜单
 			System.out.println(token);
-			// boolean result = MenuUtil.deleteMenu(token.getAccessToken());
-			boolean result = MenuUtil.createMenu(getMenu(),
-					token.getAccessToken());
+			//boolean result = MenuUtil.deleteMenu(token.getAccessToken());
+			boolean result = MenuUtil.createMenu(getMenu(),token.getAccessToken());
 			String ans = MenuUtil.getMenu(token.getAccessToken());
 			System.out.println(ans);
 
