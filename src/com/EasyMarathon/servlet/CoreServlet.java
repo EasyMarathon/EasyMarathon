@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +20,13 @@ import com.EasyMarathon.util.SignUtil;
  * @author liufeng
  * @date 2013-09-29
  */
+@WebServlet(urlPatterns = "/coreServlet", initParams =
+{
+	@WebInitParam(name="retrytime", value="60"),
+	@WebInitParam(name="posibility", value="200"),
+	@WebInitParam(name="total", value="2")
+})
+
 public class CoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 4440739483644821986L;
 
@@ -50,7 +59,7 @@ public class CoreServlet extends HttpServlet {
 		// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-
+		System.out.println("----doPost----");
 		// 调用核心业务类接收消息、处理消息
 		String respXml = CoreService.processRequest(request);
 
