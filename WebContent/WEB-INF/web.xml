@@ -24,6 +24,17 @@
     <param-value>901266e75a806a5e9872a5e17a95eeb1</param-value>
   </context-param>
   
+   <servlet>
+		<servlet-name>coreServlet</servlet-name>
+		<servlet-class>
+			com.EasyMarathon.servlet.CoreServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>coreServlet</servlet-name>
+		<url-pattern>/coreServlet</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>oauthServlet</servlet-name>
 		<servlet-class>
