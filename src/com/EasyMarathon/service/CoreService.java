@@ -90,11 +90,11 @@ public class CoreService {
 						int aID=AthleteService.findAthlete(fromUserName, eventID);
 						if(aID>=0)
 						{
-							textMessage.setContent("<a href=\"FindPictureServlet?eventID="+eventID+"aID="+aID+"\">点击查看照片！</a>");
+							textMessage.setContent("<a href=\"FindPictureServlet?eventID="+eventID+"&aID="+aID+"\">点击查看照片！</a>");
 						}
 						else
 						{
-							textMessage.setContent("<a href=\"LockInfoServlet?eventID="+eventID+"aID="+aID+"\">您的账号未绑定，点击这里绑定账号！</a>");
+							textMessage.setContent("<a href=\"LockInfoServlet?eventID="+eventID+"&aID="+aID+"\">您的账号未绑定，点击这里绑定账号！</a>");
 						}
 					}
 					catch(Exception e)
