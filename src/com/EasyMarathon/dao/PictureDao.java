@@ -4,15 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
+
+import com.EasyMarathon.bean.PicBean;
 
 public class PictureDao
 {
-	public static enum Status
-	{
-		onSale, hasBuy;
-	}
-
 	Connection conn = null;
 
 	public PictureDao(Connection c)
@@ -20,30 +17,34 @@ public class PictureDao
 		conn = c;
 	}
 
-	public HashMap<String, Status> GetAllPics(int aID, int eventID)
+	public ArrayList<PicBean> GetAllPics(int aID, int eventID)
 			throws SQLException
 	{
-		final String sql1 = "select PicID,PicStatus from Pics where EventID=? AND AthleteID=?";
+		final String sql1 = "select PicID,PicStatus,Author,Price from Pics where EventID=? AND AthleteID=?";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
 			ps1.setInt(1, eventID);
 			ps1.setInt(2, aID);
 			ResultSet rs1 = ps1.executeQuery();
-			HashMap<String, Status> pics = new HashMap<>();
+			ArrayList<PicBean> pics = new ArrayList<>();
 
 			while (rs1.next())
 			{
-				pics.put(rs1.getString(1), Status.values()[rs1.getInt(2)]);
+				PicBean pic = new PicBean();
+				pic.setPicID(rs1.getString(1));
+				pic.setPicStatus(rs1.getInt(2));
+				pic.setAuthor(rs1.getString(3));
+				pic.setPrice(rs1.getInt(4));
+				pics.add(pic);
 			}
 
 			return pics;
 		}
 	}
-	
-	public Status GetPicByPicID(String picID)
-			throws SQLException
+
+	public PicBean GetPicByPicID(String picID) throws SQLException
 	{
-		final String sql1 = "select PicStatus from Pics where PicID=?";
+		final String sql1 = "select PicStatus,Author,Price from Pics where PicID=?";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
 			ps1.setString(1, picID);
@@ -51,39 +52,46 @@ public class PictureDao
 
 			if (rs1.next())
 			{
-				return Status.values()[rs1.getInt(1)];
+				PicBean pic = new PicBean();
+				pic.setPicID(picID);
+				pic.setPicStatus(rs1.getInt(1));
+				pic.setAuthor(rs1.getString(2));
+				pic.setPrice(rs1.getInt(3));
+				return pic;
 			}
 
 			return null;
 		}
 	}
 
-	public boolean AddPic(int eventID, int aID, String picID)
-			throws SQLException
+	public boolean AddPic(int eventID, int aID, PicBean pic) throws SQLException
 	{
-		final String sql1 = "insert into Pics (EventID,AthleteID,PicID) values(?,?,?)";
+		final String sql1 = "insert into Pics (EventID,AthleteID,PicID,Price,Author) values(?,?,?,?,?)";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
 			ps1.setInt(1, eventID);
 			ps1.setInt(2, aID);
-			ps1.setString(3, picID);
+			ps1.setString(3, pic.getPicID());
+			ps1.setInt(4, pic.getPrice());
+			ps1.setString(5, pic.getAuthor());
 
 			ps1.executeUpdate();
 			return true;
 		}
 	}
 
-	public Status ChgPicStatus(String picID, Status newStatus)
-			throws SQLException
+	public PicBean UpdPic(PicBean pic) throws SQLException
 	{
-		final String sql1 = "update Pics set PicStatus=? where PicID=?";
+		final String sql1 = "update Pics set PicStatus=?,Price=?,Author=? where PicID=?";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
-			ps1.setInt(1, newStatus.ordinal());
-			ps1.setString(2, picID);
+			ps1.setInt(1, pic.getPicStatus().ordinal());
+			ps1.setInt(2, pic.getPrice());
+			ps1.setString(3, pic.getAuthor());
+			ps1.setString(4, pic.getPicID());
 
 			ps1.executeUpdate();
-			return newStatus;
+			return pic;
 		}
 	}
 }

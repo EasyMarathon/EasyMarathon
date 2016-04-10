@@ -3,11 +3,10 @@ package com.EasyMarathon.test;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.EasyMarathon.bean.EventBean;
 import com.EasyMarathon.bean.FreePicBean;
+import com.EasyMarathon.bean.PicBean;
 import com.EasyMarathon.bean.UserBean;
 import com.EasyMarathon.dao.AthleteDao;
 import com.EasyMarathon.dao.DaoBase;
@@ -177,12 +176,12 @@ public class DaoTester
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			HashMap<String, PictureDao.Status> pics = picdao.GetAllPics(
+			ArrayList<PicBean> pics = picdao.GetAllPics(
 					Integer.parseInt(cont[1]), Integer.parseInt(cont[2]));
 			String ret = "get " + pics.size() + " pics\n";
-			for (Map.Entry<String, PictureDao.Status> e : pics.entrySet())
+			for (PicBean p : pics)
 			{
-				ret += "picID:" + e.getKey() + "\nstatus:" + e.getValue().name()
+				ret += "picID:" + p.getPicID() + "\nstatus:" + p.getPicStatus()
 						+ "\n";
 			}
 			return ret;
@@ -204,8 +203,9 @@ public class DaoTester
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			picdao.AddPic(Integer.parseInt(cont[1]), Integer.parseInt(cont[2]),
-					cont[3]);
+			PicBean pic = new PicBean();
+			pic.setPicID(cont[3]);
+			picdao.AddPic(Integer.parseInt(cont[1]), Integer.parseInt(cont[2]),pic);
 			return "finish";
 		}
 		catch (SQLException e)
@@ -225,13 +225,11 @@ public class DaoTester
 		PictureDao picdao = new PictureDao(conn);
 		try
 		{
-			PictureDao.Status oldS = picdao.GetPicByPicID(cont[1]);
-			PictureDao.Status newS = null;
-			if (oldS == PictureDao.Status.onSale)
-				newS = PictureDao.Status.hasBuy;
-			else if (oldS == PictureDao.Status.hasBuy)
-				newS = PictureDao.Status.onSale;
-			String ret = picdao.ChgPicStatus(cont[1], newS).name();
+			PicBean pic = picdao.GetPicByPicID(cont[1]);
+			if (pic.getPicStatus() == PicBean.Status.onSale)
+				pic.setPicStatus(PicBean.Status.hasBuy);
+			else pic.setPicStatus(PicBean.Status.onSale);
+			String ret = picdao.UpdPic(pic).getPicStatus().name();
 			return "new Status:" + ret;
 		}
 		catch (SQLException e)
