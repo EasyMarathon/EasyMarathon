@@ -94,7 +94,7 @@ public class CoreService {
 						}
 						else
 						{
-							textMessage.setContent("<a href=\"LockInfoServlet?eventID="+eventID+"&aID="+aID+"\">您的账号未绑定，点击这里绑定账号！</a>");
+							textMessage.setContent("<a href=\"120.27.106.188/easyrun/mainPage.jsp\">您的账号未绑定，点击这里绑定账号！</a>");
 						}
 					}
 					catch(Exception e)
