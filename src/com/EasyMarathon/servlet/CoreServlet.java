@@ -16,9 +16,6 @@ import com.EasyMarathon.util.SignUtil;
 
 /**
  * 请求处理的核心类
- * 
- * @author liufeng
- * @date 2013-09-29
  */
 @WebServlet(urlPatterns = "/coreServlet", initParams =
 {

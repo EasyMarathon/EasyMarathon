@@ -57,6 +57,7 @@ public class CoreService {
 					// 根据key值判断用户点击的按钮
 					System.out.println("key="+eventKey);
 					if (eventKey.equals("findPicture")) {
+						System.out.println("查找照片中...");
 						textMessage.setContent("查找照片中...");
 						respXml = MessageUtil.messageToXml(textMessage);
 					}
