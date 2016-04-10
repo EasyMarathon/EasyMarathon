@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,17 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.dom4j.DocumentException;
 
 import com.EasyMarathon.bean.MsgBean;
-import com.EasyMarathon.service.CoreService;
 import com.EasyMarathon.util.SignUtil;
 
 /**
  * Servlet implementation class Test01
  */
-@WebServlet(urlPatterns = "/try", initParams =
-{
-	@WebInitParam(name="appID", value="wxa6bb25947675b744"),
-	@WebInitParam(name="appsecret", value="c39ae4fc9da658a6642e2dd47626a45f")
-})
+@WebServlet(urlPatterns = "/try")
 
 
 public class BaseTest extends HttpServlet
@@ -57,18 +51,6 @@ public class BaseTest extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		System.out.println("----doPost----");
-		// 调用核心业务类接收消息、处理消息
-		String respXml = CoreService.processRequest(request);
-
-		// 响应消息
-		PrintWriter out = response.getWriter();
-		out.print(respXml);
-		out.close();
-		/*
 		request.setCharacterEncoding("UTF-8"); 
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
@@ -84,7 +66,7 @@ public class BaseTest extends HttpServlet
 		}
 
 		out.close();
-		out = null;*/
+		out = null;
 	}
 	
 	public String SimpleReply(HttpServletRequest request)
@@ -95,15 +77,8 @@ public class BaseTest extends HttpServlet
 		String ret = "";
 		try
 		{
-			try
-			{
-				msg = gm.getMsg(request);
-			}
-			catch (DocumentException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			msg = gm.getMsg(request);
+
 			System.out.println("GetAMsg:\n--From:"+msg.getFromUserName()+"\n--to:"+msg.getToUserName()+"\n--time:"+msg.getCreateTime()+"\n--content:"+msg.getContent());
 			retmsg.setFromUserName(msg.getToUserName());
 			retmsg.setToUserName(msg.getFromUserName());
@@ -146,6 +121,11 @@ public class BaseTest extends HttpServlet
 			}
 			else
 				retmsg.setContent("你说的是："+msg.getContent());
+		}
+		catch (DocumentException e)
+		{
+			e.printStackTrace();
+			return "";
 		}
 		catch (Exception e)
 		{

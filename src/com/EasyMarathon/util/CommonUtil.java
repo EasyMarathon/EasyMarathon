@@ -16,7 +16,7 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.EasyMarathon.token.Token;
+import com.EasyMarathon.bean.Token;
 
 /**
  * 通用工具类

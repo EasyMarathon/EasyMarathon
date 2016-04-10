@@ -3,7 +3,7 @@ package com.EasyMarathon.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.EasyMarathon.Button.*;
-import com.EasyMarathon.token.Token;
+import com.EasyMarathon.bean.Token;
 import com.EasyMarathon.util.CommonUtil;
 import com.EasyMarathon.util.MenuUtil;
 
