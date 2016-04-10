@@ -1,10 +1,14 @@
 package com.EasyMarathon.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.liufeng.course.message.resp.TextMessage;
 
+import com.EasyMarathon.bean.EventBean;
+import com.EasyMarathon.dao.PictureDao.Status;
 import com.EasyMarathon.util.MessageUtil;
 
 /**
@@ -20,6 +24,7 @@ public class CoreService {
 	public static String processRequest(HttpServletRequest request) {
 		// xml格式的消息数据
 		String respXml = null;
+		String res=new String();
 		try {
 			// 调用parseXml方法解析请求消息
 			Map<String, String> requestMap = MessageUtil.parseXml(request);
@@ -58,8 +63,15 @@ public class CoreService {
 					System.out.println("key="+eventKey);
 					if (eventKey.equals("findPicture")) {
 						System.out.println("查找照片中...");
-						textMessage.setContent("查找照片中...");
+						//textMessage.setContent("查找照片中...");
+						ArrayList<EventBean> events=AthleteService.GetEvents();
+						for(EventBean s:events)
+						{
+							res+=+s.getEventID()+"："+s.getEventName()+"\n";
+						}
+						textMessage.setContent(res);
 						respXml = MessageUtil.messageToXml(textMessage);
+						//respXml = MessageUtil.messageToXml(textMessage);
 					}
 					/*else if (eventKey.equals("iteye")) {
 						textMessage.setContent("ITeye即创办于2003年9月的JavaEye,从最初的以讨论Java技术为主的技术论坛，已经逐渐发展成为涵盖整个软件开发领域的综合性网站。\n\nhttp://www.iteye.com");
@@ -68,9 +80,28 @@ public class CoreService {
 				}
 			}
 			// 当用户发消息时
-			else {
-				textMessage.setContent("请通过菜单使用网址导航服务！");
-				respXml = MessageUtil.messageToXml(textMessage);
+			else
+				if(msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT))
+			{
+					String ss=requestMap.get("Content");
+				    Integer eventID=null;
+					try{
+						eventID=Integer.parseInt(ss);
+						int aID=AthleteService.findAthlete(fromUserName, eventID);
+						if(aID>=0)
+						{
+							textMessage.setContent("<a href=\"FindPictureServlet?eventID="+eventID+"aID="+aID+"\">点击查看照片！</a>");
+						}
+						else
+						{
+							textMessage.setContent("<a href=\"RegisterServlet\">您的账号未绑定，点击这里绑定账号！</a>");
+						}
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}	
+				    respXml = MessageUtil.messageToXml(textMessage);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

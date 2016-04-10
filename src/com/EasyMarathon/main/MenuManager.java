@@ -32,7 +32,10 @@ public class MenuManager
 		ViewButton btn12 = new ViewButton();
 		btn12.setName("个人中心");
 		btn12.setType("view");
-		btn12.setUrl("http://120.27.106.188/easyrun/mainPage.jsp");
+		btn12.setUrl(
+				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
+						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FoauthServlet&response_type=code&"
+						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
 		ClickButton btn21 = new ClickButton();
 		btn21.setName("照片查询");

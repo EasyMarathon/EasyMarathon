@@ -74,7 +74,23 @@ public class EventDao
 				return null;
 		}
 	}
-	
+	public ArrayList<EventBean> GetAllEvents() throws SQLException
+	{
+		final String sql1 = "select * from Events";
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
+		{
+			ResultSet rs1 = ps1.executeQuery();
+			ArrayList<EventBean> events = new ArrayList<>();
+			while(rs1.next())
+			{
+				EventBean event = new EventBean();
+				event.setEventID(rs1.getInt("EventID"));
+				event.setEventName(rs1.getString("EventName"));
+				events.add(event);
+			}
+			return events;
+		}
+	}
 	public boolean updateEvent(EventBean event)
 			throws SQLException
 	{

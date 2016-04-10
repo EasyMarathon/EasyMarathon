@@ -128,8 +128,15 @@ public class PicService {
 	public boolean uploadPicService(File picture, String eventId)  {
 		conn = DaoBase.getConnection(true);
 		PictureDao picturedao=new PictureDao(conn);
-		
-		int eventID=Integer.parseInt(eventId);		
+		Integer eventID = null;
+		try
+		{
+			eventID=Integer.parseInt(eventId);		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		String srcImgPath=picture.getAbsolutePath();//已经包含照片名
 		//System.out.println(srcImgPath);
 		NumIdentify numidentify=new NumIdentify();
