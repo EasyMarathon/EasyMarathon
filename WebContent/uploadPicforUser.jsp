@@ -63,7 +63,7 @@
 	<%
 
 %>
-	<form enctype="multipart/form-data" action="bg/uploadPic" method="post">
+	<form enctype="multipart/form-data" action="bg/uploadPicforUser" method="post">
 
 		<div class="htmleaf-container" style="min-height: 300px">
 			<div class="container kv-main">
