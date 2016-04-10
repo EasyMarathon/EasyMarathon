@@ -5,15 +5,15 @@
 
 <struts>
 
-    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="true" />
+    <!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" /> -->
 
-    <package name="strutsBean" namespace="/bg" extends="struts-default">
-    
-    	<default-action-ref name="login.jsp" />
-
-       
-		
+    <package name="strutsBean"  extends="struts-default" namespace="/">
+    	<action name="uploadPic" class="com.EasyMarathon.action.PicAction" method="uploadPic">
+			<result name="success" >/uploadsuccess.jsp</result>
+			<result name="fail" >/uploadunsuccess.jsp</result>
+			<result name="input">/uploadsuccess.jsp</result>
+		</action>
     </package>
     
 </struts>

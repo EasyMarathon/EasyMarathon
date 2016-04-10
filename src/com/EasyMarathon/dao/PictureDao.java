@@ -58,7 +58,7 @@ public class PictureDao
 		}
 	}
 
-	public boolean AddPic(int eventID, int aID, String picID)
+	public boolean AddPic(int eventID, int aID,String picID )
 			throws SQLException
 	{
 		final String sql1 = "insert into Pics (EventID,AthleteID,PicID) values(?,?,?)";
