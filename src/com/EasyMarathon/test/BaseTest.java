@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.dom4j.DocumentException;
 
 import com.EasyMarathon.bean.MsgBean;
+import com.EasyMarathon.service.CoreService;
 import com.EasyMarathon.util.SignUtil;
 
 /**
@@ -56,6 +57,18 @@ public class BaseTest extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		System.out.println("----doPost----");
+		// 调用核心业务类接收消息、处理消息
+		String respXml = CoreService.processRequest(request);
+
+		// 响应消息
+		PrintWriter out = response.getWriter();
+		out.print(respXml);
+		out.close();
+		/*
 		request.setCharacterEncoding("UTF-8"); 
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
@@ -71,7 +84,7 @@ public class BaseTest extends HttpServlet
 		}
 
 		out.close();
-		out = null;
+		out = null;*/
 	}
 	
 	public String SimpleReply(HttpServletRequest request)
