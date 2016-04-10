@@ -5,20 +5,40 @@
 
 <struts>
 
-    <!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="true" /> -->
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" 
+		/> <constant name="struts.devMode" value="true" /> -->
 
-    <package name="strutsBean"  extends="struts-default" namespace="/">
-    	<action name="uploadPic" class="com.EasyMarathon.action.PicAction" method="uploadPic">
-		<result name="success" >/uploadsuccess.jsp</result>
-			<result name="fail" >/uploadunsuccess.jsp</result>
+	<package name="strutsBean" extends="struts-default" namespace="/">
+		<action name="uploadPic" class="com.EasyMarathon.action.PicAction"
+			method="uploadPic">
+			<result name="success">/uploadsuccess.jsp</result>
+			<result name="fail">/uploadunsuccess.jsp</result>
 			<result name="input">/uploadPic.jsp</result>
 		</action>
-		<action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction" method="uploadPicforUser">
-			<result name="success" >/uploadsuccess.jsp</result>
-			<result name="fail" >/uploadunsuccess.jsp</result>
+		<action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction"
+			method="uploadPicforUser">
+			<result name="success">/uploadsuccess.jsp</result>
+			<result name="fail">/uploadunsuccess.jsp</result>
 			<result name="input">/uploadPic.jsp</result>
 		</action>
-    </package>
-    
+		<action name="lockInfo" class="com.EasyMarathon.action.AthleteAction"
+			method="lockInfo">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/unsuccess.jsp</result>
+			<result name="input">/lockInfo.jsp</result>
+		</action>
+		<action name="findPic" class="com.EasyMarathon.action.AthleteAction"
+			method="findPic">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/unsuccess.jsp</result>
+			<result name="input">/lockInfo.jsp</result>
+		</action>
+		<action name="register" class="com.EasyMarathon.action.UserAction"
+			method="register">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/unsuccess.jsp</result>
+			<result name="input">/lockInfo.jsp</result>
+		</action>
+	</package>
+
 </struts>
