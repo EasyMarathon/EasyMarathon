@@ -2,13 +2,13 @@ package com.EasyMarathon.service;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.liufeng.course.message.resp.TextMessage;
 
 import com.EasyMarathon.bean.EventBean;
-import com.EasyMarathon.dao.PictureDao.Status;
 import com.EasyMarathon.util.MessageUtil;
 
 /**
