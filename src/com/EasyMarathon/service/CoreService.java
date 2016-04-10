@@ -1,12 +1,8 @@
 package com.EasyMarathon.service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import org.liufeng.course.message.resp.Article;
-import org.liufeng.course.message.resp.NewsMessage;
 import org.liufeng.course.message.resp.TextMessage;
 
 import com.EasyMarathon.util.MessageUtil;
@@ -45,6 +41,7 @@ public class CoreService {
 				String eventType = requestMap.get("Event");
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
+					System.out.println("订阅");
 					textMessage.setContent("您好，欢迎关注易跑平台");
 					// 将消息对象转换成xml
 					respXml = MessageUtil.messageToXml(textMessage);
@@ -58,6 +55,7 @@ public class CoreService {
 					// 事件KEY值，与创建菜单时的key值对应
 					String eventKey = requestMap.get("EventKey");
 					// 根据key值判断用户点击的按钮
+					System.out.println("key="+eventKey);
 					if (eventKey.equals("findPicture")) {
 						textMessage.setContent("查找照片中...");
 						respXml = MessageUtil.messageToXml(textMessage);
