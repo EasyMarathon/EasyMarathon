@@ -41,6 +41,7 @@ public class GoUploadPic  extends HttpServlet{
 		Map<Integer, String> event=new HashMap<Integer, String>();
 		try
 		{
+			
 			ArrayList<EventBean> events = eventdao
 					.GetEventByStatus(EventBean.Status.ongoing);
 /*			ArrayList<EventBean> events = new ArrayList<EventBean>() ;
