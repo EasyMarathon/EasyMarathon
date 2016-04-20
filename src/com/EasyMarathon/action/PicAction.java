@@ -67,20 +67,20 @@ public class PicAction
 		System.out.println(picture.getPicStatus());
 		
 		
-		HttpServletRequest request = ServletActionContext.getRequest();
-		try {
-			ServletInputStream in = request.getInputStream();
-			int index=-1;
-			byte[] b=new byte[1024];
-			System.out.println("¥Ú”°request");
-			while((index = in.read(b))!=-1){
-				System.out.println(b.toString());
-			}
-			System.out.println("finish");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		HttpServletRequest request = ServletActionContext.getRequest();
+//		try {
+//			ServletInputStream in = request.getInputStream();
+//			int index=-1;
+//			byte[] b=new byte[1024];
+//			System.out.println("¥Ú”°request");
+//			while((index = in.read(b))!=-1){
+//				System.out.println(b.toString());
+//			}
+//			System.out.println();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		System.out.println();
 		

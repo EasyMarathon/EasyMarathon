@@ -53,11 +53,11 @@
 		<tr><td>特权</td><td><%=user.getPrivilegeList()%></td></tr>
 	</table>
 
- 	<form enctype="multipart/form-data" action="bg/uploadPicforUser" method="post"> 
-	<!-- <form action="bg/uploadPicforUser" method="post"> -->
+ 	<!-- <form enctype="multipart/form-data" action="uploadPicforUser" method="post">  -->
+	<form action="bg/uploadPicforUser" method="post"> 
 		<div class="htmleaf-container" style="min-height: 300px">
 			<div class="container kv-main">
-<!-- 				<br> <input id="file-0a" class="file" type="file" multiple data-min-file-count="1" name="picture.file"> <br> -->
+ 				<!-- <br> <input id="file-0a" class="file" type="file" multiple data-min-file-count="1" name="picture.file"> <br>  -->
 
 				<div class="form-group">
 <div style="display:none">

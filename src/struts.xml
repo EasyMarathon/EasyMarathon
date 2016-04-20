@@ -12,15 +12,15 @@
 		<action name="uploadPic" class="com.EasyMarathon.action.PicAction"
 			method="uploadPic">
 			<result name="success">/bg/uploadsuccess.jsp</result>
-			<result name="fail">/bg/uploadsuccess.jsp</result>
+			<result name="fail">/bg/uploadunsuccess.jsp</result>
 			<result name="input">/bg/uploadPic.jsp</result>
 		</action>
-		<action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction"
+		 <action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction"
 			method="uploadPicforUser">
-			<result name="success">/bg/success.jsp</result>
-			<result name="fail">/bg/unsuccess.jsp</result>
-			<result name="input">/bg/uploadPic.jsp</result>
-		</action>
+			<result name="success" type="dispatcher">/bg/uploadsuccess.jsp</result>
+			<result name="fail">/bg/uploadunsuccess.jsp</result>
+			<result name="input">/bg/uploadPicforUser.jsp</result>
+		</action> 
 		<action name="lockInfo" class="com.EasyMarathon.action.AthleteAction"
 			method="lockInfo">
 			<result name="success">/bg/lockInfosuccess.jsp</result>
