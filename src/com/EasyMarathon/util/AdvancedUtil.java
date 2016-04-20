@@ -35,8 +35,6 @@ import com.EasyMarathon.bean.WeixinOauth2Token;
 /**
  * 高级接口工具类
  * 
- * @author liufeng
- * @date 2013-11-9
  */
 public class AdvancedUtil
 {

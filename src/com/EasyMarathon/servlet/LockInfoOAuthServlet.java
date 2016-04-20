@@ -55,7 +55,7 @@ public class LockInfoOAuthServlet {
 		}
 		// Ìø×ªµ½index.jsp
 		
-		request.getRequestDispatcher("lockInfo.jsp").forward(request,
+		request.getRequestDispatcher("bg/lockInfo.jsp").forward(request,
 				response);
 	}
 }

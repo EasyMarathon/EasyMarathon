@@ -26,8 +26,12 @@ public class MenuManager
 		btn11.setType("view");
 		btn11.setUrl(
 				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
-						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FoauthServlet&response_type=code&"
+						+ "redirect_uri=http://120.27.106.188/easyrun/oauthServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
+//		btn11.setUrl(
+//				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
+//						+ "redirect_uri=http://120.27.106.188/easyrun/bg/test.jsp&response_type=code&"
+//						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
 		ViewButton btn12 = new ViewButton();
 		btn12.setName("个人中心");

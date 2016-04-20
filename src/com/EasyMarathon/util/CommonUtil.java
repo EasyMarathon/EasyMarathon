@@ -21,8 +21,6 @@ import com.EasyMarathon.bean.Token;
 /**
  * 通用工具类
  * 
- * @author liufeng
- * @date 2013-10-17
  */
 public class CommonUtil
 {

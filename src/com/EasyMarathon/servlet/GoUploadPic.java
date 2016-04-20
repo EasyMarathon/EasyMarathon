@@ -66,7 +66,7 @@ public class GoUploadPic  extends HttpServlet{
 			DaoBase.close(conn, null, null);
 		}
 		request.setAttribute("event", event);
-		request.getRequestDispatcher("upLoadPicture.jsp").forward(request,
+		request.getRequestDispatcher("bg/uploadPicforUser.jsp").forward(request,
 				response);
 	}
 

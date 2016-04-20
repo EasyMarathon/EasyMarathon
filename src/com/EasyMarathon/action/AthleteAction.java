@@ -12,7 +12,7 @@ public class AthleteAction
 {
 	SNSUserInfo snsUserInfo;
 	int eventID;
-	int aID;
+	String aID;
 
 	public SNSUserInfo getSnsUserInfo()
 	{
@@ -24,12 +24,12 @@ public class AthleteAction
 		this.snsUserInfo = snsUserInfo;
 	}
 
-	public int getaID()
+	public String getAID()
 	{
 		return aID;
 	}
 
-	public void setaID(int aID)
+	public void setAID(String aID)
 	{
 		this.aID = aID;
 	}
@@ -49,28 +49,32 @@ public class AthleteAction
 
 		// 首先判断运动员是否报名，没有报名提示
 		// 报名的
-		if (AthleteService.Bind(snsUserInfo.getOpenId(), eventID, aID))
+		int athleteID=Integer.parseInt(aID);
+		System.out.println(eventID);
+		System.out.println("运动员编号："+aID);
+		System.out.println(snsUserInfo.getOpenId());
+		if (AthleteService.Bind(snsUserInfo.getOpenId(), eventID, athleteID))
 		{
 			return "success";
 		}
 
 		else
-			return "false";
+			return "fail";
 	}
 
 	public String findPic()
 	{
-		ActionContext actionContext = ActionContext.getContext();
-		Map<String, Object> session = actionContext.getSession();
-		ArrayList<PicBean> picutres = new ArrayList<>();
-		picutres = AthleteService.returnPicture(aID, eventID);
-		if (picutres != null)
+		int athleteID=Integer.parseInt(aID);
+		ArrayList<PicBean> pictures = new ArrayList<>();
+		pictures = AthleteService.returnPicture(athleteID, eventID);
+		System.out.println(pictures.size());
+		if (pictures.size()!=0)
 		{
-			session.put("pictures", picutres);
+			
 			return "success";
 		}
 		else
-			return "false";
+			return "fail";
 	}
 
 }

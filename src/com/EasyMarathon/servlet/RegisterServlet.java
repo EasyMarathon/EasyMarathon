@@ -1,6 +1,8 @@
 package com.EasyMarathon.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.EasyMarathon.bean.SNSUserInfo;
+import com.EasyMarathon.bean.UserBean;
 import com.EasyMarathon.bean.WeixinOauth2Token;
+import com.EasyMarathon.dao.DaoBase;
+import com.EasyMarathon.dao.UserDao;
 import com.EasyMarathon.util.AdvancedUtil;
 
 @WebServlet(urlPatterns = "/RegisterServlet", initParams =
@@ -47,16 +52,41 @@ public class RegisterServlet extends HttpServlet
 			// 获取用户信息
 			SNSUserInfo snsUserInfo = AdvancedUtil.getSNSUserInfo(accessToken,
 					openId);
-
+			session.setAttribute("snsUserInfo", snsUserInfo);
+			System.out.println(snsUserInfo.getOpenId());
 			// 设置要传递的参数
+			Connection conn;
+			String wechatID=snsUserInfo.getOpenId();
+			conn = DaoBase.getConnection(true);
+			UserDao userdao = new UserDao(conn);
+			UserBean user=new UserBean();
+			try
+			{
+				user=userdao.GetUser(wechatID);
+				if(user==null)
+				{
+					DaoBase.close(conn, null, null);
+					System.out.println("用户不存在，进入注册界面");
+					response.sendRedirect("bg/register.jsp");
+				}
+				else
+				{
+					DaoBase.close(conn, null, null);
+					System.out.println("用户存在进入商城");
+					response.sendRedirect("bg/mainPage.jsp");
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				System.out.println("报错");
+				response.sendRedirect("bg/register.jsp");
+			}
 			
-			//session.setAttribute("snsUserInfo", snsUserInfo);
-			request.setAttribute("snsUserInfo", snsUserInfo);
+			
 
 		}
 		// 跳转到index.jsp
 		
-		request.getRequestDispatcher("register.jsp").forward(request,
-				response);
 	}
 }

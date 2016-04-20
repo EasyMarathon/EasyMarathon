@@ -13,9 +13,6 @@ import com.EasyMarathon.util.AdvancedUtil;
 
 /**
  * 授权后的回调请求处理
- * 
- * @author liufeng
- * @date 2013-11-12
  */
 public class OAuthServlet extends HttpServlet
 {
@@ -49,11 +46,10 @@ public class OAuthServlet extends HttpServlet
 			// 设置要传递的参数
 			
 			//session.setAttribute("snsUserInfo", snsUserInfo);
-			request.setAttribute("snsUserInfo", snsUserInfo);
+			session.setAttribute("snsUserInfo", snsUserInfo);
 		}
 		// 跳转到index.jsp
-		
-		request.getRequestDispatcher("GoUploadPicService").forward(request,
-				response);
+		System.out.println("进入GoUploadPicServlet。。");
+		request.getRequestDispatcher("GoUploadPicServlet").forward(request, response);
 	}
 }
