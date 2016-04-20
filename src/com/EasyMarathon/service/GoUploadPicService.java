@@ -43,14 +43,14 @@ public class GoUploadPicService extends HttpServlet {
 		try
 		{
 			
-			/*ArrayList<EventBean> events = eventdao
-					.GetEventByStatus(EventBean.Status.ongoing);*/
-			ArrayList<EventBean> events = new ArrayList<EventBean>() ;
+			ArrayList<EventBean> events = eventdao
+					.GetEventByStatus(EventBean.Status.ongoing);
+			/*ArrayList<EventBean> events = new ArrayList<EventBean>() ;
 			EventBean eventbean=new EventBean();
 			eventbean.setEventID(1);
 			eventbean.setEventName("º¼ÖİÂíÀ­ËÉ");
 			eventbean.setEventStatus(null);
-			events.add(eventbean);
+			events.add(eventbean);*/
 			for (EventBean eb : events)
 			{
 				

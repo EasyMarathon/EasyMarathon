@@ -34,7 +34,7 @@ public class MenuManager
 		btn12.setType("view");
 		btn12.setUrl(
 				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
-						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FoauthServlet&response_type=code&"
+						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FRegisterServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
 		ClickButton btn21 = new ClickButton();

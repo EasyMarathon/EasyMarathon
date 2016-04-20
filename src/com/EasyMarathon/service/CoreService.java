@@ -2,13 +2,13 @@ package com.EasyMarathon.service;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.liufeng.course.message.resp.TextMessage;
 
 import com.EasyMarathon.bean.EventBean;
-import com.EasyMarathon.dao.PictureDao.Status;
 import com.EasyMarathon.util.MessageUtil;
 
 /**
@@ -94,7 +94,7 @@ public class CoreService {
 						}
 						else
 						{
-							textMessage.setContent("<a href=\"RegisterServlet\">您的账号未绑定，点击这里绑定账号！</a>");
+							textMessage.setContent("<a href=\"LockInfoServlet?eventID="+eventID+"aID="+aID+"\">您的账号未绑定，点击这里绑定账号！</a>");
 						}
 					}
 					catch(Exception e)
