@@ -64,7 +64,7 @@ public class PicAction
 		System.out.println("进入用户照片上传。。。");
 		System.out.println("微信号："+wechatID);
 		System.out.println("赛事号："+eventID);
-		System.out.println(picture.getPicStatus());
+//		System.out.println(picture.getPicStatus());
 		
 		
 //		HttpServletRequest request = ServletActionContext.getRequest();
@@ -83,7 +83,7 @@ public class PicAction
 //		}
 		
 		System.out.println();
-		
+		//return "success";
 		if (picservice.uploadPicforUserService(picture.getFile(), eventID,wechatID))
 			return "success";
 		else

@@ -85,11 +85,11 @@
 
 	</form>
 
-	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
-	<script src="js/fileinput.js" type="text/javascript"></script>
-	<script src="js/fileinput_locale_zh.js" type="text/javascript"></script>
-	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"
-		type="text/javascript"></script>
+<!-- 	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script> -->
+<!-- 	<script src="js/fileinput.js" type="text/javascript"></script> -->
+<!-- 	<script src="js/fileinput_locale_zh.js" type="text/javascript"></script> -->
+<!-- 	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js" -->
+<!-- 		type="text/javascript"></script> -->
 	<script>
 	    $("#file-0").fileinput({
 	        'allowedFileExtensions' : ['jpg', 'png','gif'],

@@ -17,7 +17,7 @@
 		</action>
 		 <action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction"
 			method="uploadPicforUser">
-			<result name="success" type="dispatcher">/bg/uploadsuccess.jsp</result>
+			<result name="success" type="dispatcher">test.jsp</result>
 			<result name="fail">/bg/uploadunsuccess.jsp</result>
 			<result name="input">/bg/uploadPicforUser.jsp</result>
 		</action> 
