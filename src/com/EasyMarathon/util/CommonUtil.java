@@ -21,8 +21,6 @@ import com.EasyMarathon.bean.Token;
 /**
  * 通用工具类
  * 
- * @author liufeng
- * @date 2013-10-17
  */
 public class CommonUtil
 {
@@ -189,7 +187,8 @@ public class CommonUtil
 
 	public static void main(String args[])
 	{
-		System.out.println(
-				urlEncodeUTF8("http://120.27.106.188/easyrun/oauthServlet"));
+		/*System.out.println(
+				urlEncodeUTF8("http://www.easyrun.top/"));*/
+		System.out.println(getToken("wx494687354f4dcb81","60e47ec5773f5f8c1186f32d6ac5b77c").getAccessToken());
 	}
 }

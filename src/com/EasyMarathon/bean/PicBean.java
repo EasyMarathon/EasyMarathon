@@ -10,7 +10,7 @@ public class PicBean
 	}
 	private File file;
 	private String picID;
-	private String author = "知名摄影师";
+	private String author = "";
 	private int Price = 0;
 	private Status picStatus;
 

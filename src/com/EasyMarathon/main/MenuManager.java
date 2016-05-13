@@ -3,6 +3,7 @@ package com.EasyMarathon.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.EasyMarathon.Button.*;
+import com.EasyMarathon.bean.GongzhonghaoInfo;
 import com.EasyMarathon.bean.Token;
 import com.EasyMarathon.util.CommonUtil;
 import com.EasyMarathon.util.MenuUtil;
@@ -25,18 +26,29 @@ public class MenuManager
 		btn11.setName("我要上传");
 		btn11.setType("view");
 		btn11.setUrl(
-				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
-						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FoauthServlet&response_type=code&"
+				"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+				+ GongzhonghaoInfo.appID+"&"
+						+ "redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/oauthServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
-
+		//http://7891556.cn/easyrun/
 		ViewButton btn12 = new ViewButton();
-		btn12.setName("个人中心");
+		btn12.setName("易跑商城");
 		btn12.setType("view");
 		btn12.setUrl(
-				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa6bb25947675b744&"
-						+ "redirect_uri=http%3A%2F%2F120.27.106.188%2Feasyrun%2FRegisterServlet&response_type=code&"
+				"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+				+ GongzhonghaoInfo.appID+"&"
+						+ "redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/ShoppingServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
+		ViewButton btn13 = new ViewButton();
+		btn13.setName("赛事报名");
+		btn13.setType("view");
+		btn13.setUrl(
+				"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+				+ GongzhonghaoInfo.appID+"&"
+						+ "redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/MarathonRegisterServlet&response_type=code&"
+						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
+		
 		ClickButton btn21 = new ClickButton();
 		btn21.setName("照片查询");
 		btn21.setType("click");
@@ -59,12 +71,7 @@ public class MenuManager
 
 		ComplexButton mainBtn1 = new ComplexButton();
 		mainBtn1.setName("族友专区");
-		mainBtn1.setSub_button(new Button[] { btn11, btn12 });
-		/*
-		ComplexButton mainBtn2 = new ComplexButton();
-		mainBtn2.setName("照片查询");
-		mainBtn2.setSub_button(new Button[] { btn21, btn22, btn23 });
-		*/
+		mainBtn1.setSub_button(new Button[] { btn11, btn12,btn13 });
 
 		ComplexButton mainBtn3 = new ComplexButton();
 		mainBtn3.setName("易跑部落");
@@ -79,9 +86,9 @@ public class MenuManager
 	public static void main(String[] args)
 	{
 		// 第三方用户唯一凭证
-		String appId = "wxa6bb25947675b744";
+		String appId = GongzhonghaoInfo.appID;
 		// 第三方用户唯一凭证密钥
-		String appSecret = "c39ae4fc9da658a6642e2dd47626a45f";
+		String appSecret = GongzhonghaoInfo.appsecret;
 
 		// 调用接口获取凭证
 		Token token = CommonUtil.getToken(appId, appSecret);

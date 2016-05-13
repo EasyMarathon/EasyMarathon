@@ -35,8 +35,6 @@ import com.EasyMarathon.bean.WeixinOauth2Token;
 /**
  * 高级接口工具类
  * 
- * @author liufeng
- * @date 2013-11-9
  */
 public class AdvancedUtil
 {
@@ -753,8 +751,7 @@ public class AdvancedUtil
 	 * @param mediaFileUrl
 	 *            媒体文件的url
 	 */
-	public static WeixinMedia uploadMedia(String accessToken, String type,
-			String mediaFileUrl)
+	public static WeixinMedia uploadMedia(String accessToken, String type,String mediaFileUrl)
 	{
 		WeixinMedia weixinMedia = null;
 		// 拼装请求地址
@@ -847,7 +844,7 @@ public class AdvancedUtil
 		catch (Exception e)
 		{
 			weixinMedia = null;
-			log.error("上传媒体文件失败：{}", e);
+			System.out.println("上传媒体文件失败："+e.getStackTrace());
 		}
 		return weixinMedia;
 	}
@@ -912,13 +909,16 @@ public class AdvancedUtil
 
 	public static void main(String args[])
 	{
+		String appId = "wxa6bb25947675b744";
+		// 第三方用户唯一凭证密钥
+		String appSecret = "c39ae4fc9da658a6642e2dd47626a45f";
 		// 获取接口访问凭证
-		String accessToken = CommonUtil.getToken("APPID", "APPSECRET")
+		String accessToken = CommonUtil.getToken(appId,appSecret)
 				.getAccessToken();
-
-		/**
+/*
+		*//**
 		 * 发送客服消息（文本消息）
-		 */
+		 *//*
 		// 组装文本客服消息
 		String jsonTextMsg = makeTextCustomMessage(
 				"oEdzejiHCDqafJbz4WNJtWTMbDcE",
@@ -926,9 +926,9 @@ public class AdvancedUtil
 		// 发送客服消息
 		sendCustomMessage(accessToken, jsonTextMsg);
 
-		/**
+		*//**
 		 * 发送客服消息（图文消息）
-		 */
+		 *//*
 		Article article1 = new Article();
 		article1.setTitle("微信上也能斗地主");
 		article1.setDescription("");
@@ -951,9 +951,9 @@ public class AdvancedUtil
 		// 发送客服消息
 		sendCustomMessage(accessToken, jsonNewsMsg);
 
-		/**
+		*//**
 		 * 创建临时二维码
-		 */
+		 *//*
 		WeixinQRCode weixinQRCode = createTemporaryQRCode(accessToken, 900,
 				111111);
 		// 临时二维码的ticket
@@ -961,17 +961,17 @@ public class AdvancedUtil
 		// 临时二维码的有效时间
 		System.out.println(weixinQRCode.getExpireSeconds());
 
-		/**
+		*//**
 		 * 根据ticket换取二维码
-		 */
+		 *//*
 		String ticket = "gQEg7zoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL2lIVVJ3VmJsTzFsQ0ZuQ0Y1bG5WAAIEW35+UgMEAAAAAA==";
 		String savePath = "G:/download";
 		// 根据ticket换取二维码
 		getQRCode(ticket, savePath);
 
-		/**
+		*//**
 		 * 获取用户信息
-		 */
+		 *//*
 		WeixinUserInfo user = getUserInfo(accessToken,
 				"oEdzejiHCDqafJbz4WNJtWTMbDcE");
 		System.out.println("OpenID：" + user.getOpenId());
@@ -985,9 +985,9 @@ public class AdvancedUtil
 		System.out.println("语言：" + user.getLanguage());
 		System.out.println("头像：" + user.getHeadImgUrl());
 
-		/**
+		*//**
 		 * 获取关注者列表
-		 */
+		 *//*
 		WeixinUserList weixinUserList = getUserList(accessToken, "");
 		System.out.println("总关注用户数：" + weixinUserList.getTotal());
 		System.out.println("本次获取用户数：" + weixinUserList.getCount());
@@ -995,9 +995,9 @@ public class AdvancedUtil
 				"OpenID列表：" + weixinUserList.getOpenIdList().toString());
 		System.out.println("next_openid：" + weixinUserList.getNextOpenId());
 
-		/**
+		*//**
 		 * 查询分组
-		 */
+		 *//*
 		List<WeixinGroup> groupList = getGroups(accessToken);
 		// 循环输出各分组信息
 		for (WeixinGroup group : groupList)
@@ -1006,28 +1006,29 @@ public class AdvancedUtil
 					group.getId(), group.getName(), group.getCount()));
 		}
 
-		/**
+		*//**
 		 * 创建分组
-		 */
+		 *//*
 		WeixinGroup group = createGroup(accessToken, "公司员工");
 		System.out.println(String.format("成功创建分组：%s id：%d", group.getName(),
 				group.getId()));
 
-		/**
+		*//**
 		 * 修改分组名
-		 */
+		 *//*
 		updateGroup(accessToken, 100, "同事");
 
-		/**
+		*//**
 		 * 移动用户分组
-		 */
+		 *//*
 		updateMemberGroup(accessToken, "oEdzejiHCDqafJbz4WNJtWTMbDcE", 100);
-
+*/
 		/**
 		 * 上传多媒体文件
 		 */
-		WeixinMedia weixinMedia = uploadMedia(accessToken, "voice",
-				"http://localhost:8080/weixinmpapi/test.mp3");
+		String url="http://localhost:8080/EasyMarathon/uploadPicture/1.jpg";
+		WeixinMedia weixinMedia = uploadMedia(accessToken, "image",
+				url);
 		System.out.println(weixinMedia.getMediaId());
 		System.out.println(weixinMedia.getType());
 		System.out.println(weixinMedia.getCreatedAt());
@@ -1036,7 +1037,8 @@ public class AdvancedUtil
 		 * 下载多媒体文件
 		 */
 		getMedia(accessToken,
-				"N7xWhOGYSLWUMPzVcGnxKFbhXeD_lLT5sXxyxDGEsCzWIB2CcUijSeQOYjWLMpcn",
-				"G:/download");
+				weixinMedia.getMediaId(),
+				"C:/Users/91337/Pictures");
+		System.out.println(111);
 	}
 }

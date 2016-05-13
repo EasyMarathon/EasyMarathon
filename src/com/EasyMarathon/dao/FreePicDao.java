@@ -18,6 +18,93 @@ public class FreePicDao
 		conn = c;
 	}
 
+	public ArrayList<FreePicBean> GetAllDefault(){//获取所有照片，默认排序
+		final String sql1 = "select Users.WechatName, Events.EventName, "
+				+ "FreePics.PicID, FreePics.DownloadCnt, Events.EventID, Users.HeadImgUrl "
+				+ "from FreePics, Users, Events "
+				+ "where Events.EventID=FreePics.EventID "
+				+ "and FreePics.WechatID=Users.WechatID";
+		System.out.println(sql1);
+		ArrayList<FreePicBean> pics = new ArrayList<>();
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1)){
+			ResultSet rs1 = ps1.executeQuery();
+			while (rs1.next())
+			{
+				FreePicBean fp = new FreePicBean();
+				fp.setUserName(rs1.getString(1));
+				fp.setEventName(rs1.getString(2));
+				fp.setPicID(rs1.getString(3));
+				fp.setDownloadCnt(rs1.getInt(4));
+				fp.setEventID(rs1.getInt(5));
+				fp.setHeadImgUrl(rs1.getString(6));
+				pics.add(fp);
+			}
+		} catch (SQLException e) {
+			System.out.println("error code="+e.getErrorCode());
+			System.out.println("error message"+e.getMessage());
+		}
+		return pics;
+	}
+	
+	public ArrayList<FreePicBean> GetAllBySellNum(){//获取所有照片，销量优先
+		final String sql1 = "select Users.WechatName, Events.EventName, "
+				+ "FreePics.PicID, FreePics.DownloadCnt, Events.EventID, Users.HeadImgUrl "
+				+ "from FreePics, Users, Events "
+				+ "where Events.EventID=FreePics.EventID "
+				+ "and FreePics.WechatID=Users.WechatID "
+				+ "order by FreePics.DownloadCnt DESC";
+		System.out.println(sql1);
+		ArrayList<FreePicBean> pics = new ArrayList<>();
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1)){
+			ResultSet rs1 = ps1.executeQuery();
+			while (rs1.next())
+			{
+				FreePicBean fp = new FreePicBean();
+				fp.setUserName(rs1.getString(1));
+				fp.setEventName(rs1.getString(2));
+				fp.setPicID(rs1.getString(3));
+				fp.setDownloadCnt(rs1.getInt(4));
+				fp.setEventID(rs1.getInt(5));
+				fp.setHeadImgUrl(rs1.getString(6));
+				pics.add(fp);
+			}
+		} catch (SQLException e) {
+			System.out.println("error code="+e.getErrorCode());
+			System.out.println("error message"+e.getMessage());
+		}
+		return pics;
+	}
+	
+	public ArrayList<FreePicBean> GetAllByTime(){//获取所有照片，上传时间排序
+		final String sql1 = "select Users.WechatName, Events.EventName, "
+				+ "FreePics.PicID, FreePics.DownloadCnt, Events.EventID, Users.HeadImgUrl "
+				+ "from FreePics, Users, Events "
+				+ "where Events.EventID=FreePics.EventID "
+				+ "and FreePics.WechatID=Users.WechatID "
+				+ "order by FreePics.upTime DESC";
+		System.out.println(sql1);
+		ArrayList<FreePicBean> pics = new ArrayList<>();
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1)){
+			ResultSet rs1 = ps1.executeQuery();
+			while (rs1.next())
+			{
+				FreePicBean fp = new FreePicBean();
+				fp.setUserName(rs1.getString(1));
+				fp.setEventName(rs1.getString(2));
+				fp.setPicID(rs1.getString(3));
+				fp.setDownloadCnt(rs1.getInt(4));
+				fp.setEventID(rs1.getInt(5));
+				fp.setHeadImgUrl(rs1.getString(6));
+				pics.add(fp);
+			}
+		} catch (SQLException e) {
+			System.out.println("error code="+e.getErrorCode());
+			System.out.println("error message"+e.getMessage());
+		}
+		return pics;
+	}
+	
+	
 	public ArrayList<FreePicBean> GetFreePicsByEventID(int eventID)
 			throws SQLException
 	{

@@ -16,11 +16,7 @@ import com.EasyMarathon.util.SignUtil;
 /**
  * 请求处理的核心类
  */
-@WebServlet(urlPatterns = "/wxcore", initParams = 
-{
-	@WebInitParam(name = "appID", value = "wxa6bb25947675b744"),
-	@WebInitParam(name = "appsecret", value = "c39ae4fc9da658a6642e2dd47626a45f") 
-})
+@WebServlet(urlPatterns = "/wxcore")
 
 public class CoreServlet extends HttpServlet
 {
@@ -45,6 +41,7 @@ public class CoreServlet extends HttpServlet
 		{
 			out.print(echostr);
 		}
+		out.print("false");
 		out.close();
 		out = null;
 	}

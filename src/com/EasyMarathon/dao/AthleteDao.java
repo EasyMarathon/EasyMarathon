@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.EasyMarathon.bean.Athlete;
+
 public class AthleteDao
 {
 	Connection conn = null;
@@ -56,5 +58,21 @@ public class AthleteDao
 			ps2.executeUpdate();
 			return true;
 		}
+	}
+	
+	public boolean AddAthleteBase(Athlete athlete){//增加运动员的基本信息，不包含号码牌
+		final String sql = "insert into Athletes (EventID,WechatID,state) values(?,?,?)";
+		try (PreparedStatement ps1 = conn.prepareStatement(sql))
+		{
+			ps1.setInt(1, athlete.getEventID());
+			ps1.setString(2, athlete.getWechatID());
+			ps1.setInt(3,athlete.getState().ordinal());
+			ps1.executeUpdate();
+		} catch (SQLException e) {	
+			System.out.println("error Code="+e.getErrorCode());
+			System.out.println("error Message="+e.getMessage());
+			return false;
+		}
+		return true;
 	}
 }

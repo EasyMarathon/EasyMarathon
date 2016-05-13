@@ -2,47 +2,94 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>EasyMarathon</display-name>
   <welcome-file-list>
-    <welcome-file>GoUploadPic</welcome-file>
-    
+    <welcome-file>test.jsp</welcome-file>
   </welcome-file-list>
-  <filter>
-    <filter-name>struts2</filter-name>
-    <filter-class>
-	    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
-  	</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>struts2</filter-name>
-    <url-pattern>/bg/*</url-pattern>
-  </filter-mapping>
   <context-param>
     <param-name>appid</param-name>
-    <param-value>wxfafed3f7ae1982bd</param-value>
+    <param-value>wx494687354f4dcb81</param-value>
   </context-param>
   <context-param>
     <param-name>appsecret</param-name>
-    <param-value>901266e75a806a5e9872a5e17a95eeb1</param-value>
+    <param-value>60e47ec5773f5f8c1186f32d6ac5b77c</param-value>
   </context-param>
-   <!-- 
-   <servlet>
-		<servlet-name>coreServlet</servlet-name>
-		<servlet-class>
-			com.EasyMarathon.servlet.CoreServlet
+  <servlet>
+    <servlet-name>UserUpload</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.UserUpload
 		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>coreServlet</servlet-name>
-		<url-pattern>/coreServlet</url-pattern>
-	</servlet-mapping>
-	 -->
-	<servlet>
-		<servlet-name>oauthServlet</servlet-name>
-		<servlet-class>
-			com.EasyMarathon.servlet.OAuthServlet
+    <multipart-config>
+      <max-file-size>52428800</max-file-size>
+      <max-request-size>52428800</max-request-size>
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserUpload</servlet-name>
+    <url-pattern>/UserUpload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MarathonRegister</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.MarathonRegister
 		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>oauthServlet</servlet-name>
-		<url-pattern>/oauthServlet</url-pattern>
-	</servlet-mapping>
+    <multipart-config>
+      <max-file-size>52428800</max-file-size>
+      <max-request-size>52428800</max-request-size>
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarathonRegister</servlet-name>
+    <url-pattern>/MarathonRegister</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MarathonRegister2</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.MarathonRegister2
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarathonRegister2</servlet-name>
+    <url-pattern>/MarathonRegister2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MarathonRegister3</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.MarathonRegister3
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarathonRegister3</servlet-name>
+    <url-pattern>/MarathonRegister3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.TestServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FindPicServlet</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.FindPicServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindPicServlet</servlet-name>
+    <url-pattern>/bg/FindPicServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MasterUploadPic</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.MasterUploadPic
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MasterUploadPic</servlet-name>
+    <url-pattern>/bg/MasterUploadPic</url-pattern>
+  </servlet-mapping>
 </web-app>

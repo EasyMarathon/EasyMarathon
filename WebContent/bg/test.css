@@ -1,0 +1,12 @@
+dl dd{  
+    margin-top:10px;  
+    height:100px;  
+    display:relative !important;
+}  
+dl dd img{  
+    float:left !important;
+}  
+dl dd a{  
+	float:left;  
+    text-align:left;  
+} 

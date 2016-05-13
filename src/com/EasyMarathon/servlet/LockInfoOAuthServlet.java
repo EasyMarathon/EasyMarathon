@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.EasyMarathon.bean.GongzhonghaoInfo;
 import com.EasyMarathon.bean.SNSUserInfo;
 import com.EasyMarathon.bean.UserBean;
 import com.EasyMarathon.bean.WeixinOauth2Token;
@@ -37,8 +38,8 @@ public class LockInfoOAuthServlet {
 		{
 			// 获取网页授权access_token
 			WeixinOauth2Token weixinOauth2Token = AdvancedUtil
-					.getOauth2AccessToken("wxa6bb25947675b744",
-							"c39ae4fc9da658a6642e2dd47626a45f", code);
+					.getOauth2AccessToken(GongzhonghaoInfo.appID,
+							GongzhonghaoInfo.appsecret, code);
 
 			// 网页授权接口访问凭证
 			String accessToken = weixinOauth2Token.getAccessToken();
@@ -55,7 +56,7 @@ public class LockInfoOAuthServlet {
 		}
 		// 跳转到index.jsp
 		
-		request.getRequestDispatcher("lockInfo.jsp").forward(request,
+		request.getRequestDispatcher("bg/lockInfo.jsp").forward(request,
 				response);
 	}
 }
