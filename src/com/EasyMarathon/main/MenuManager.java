@@ -28,7 +28,9 @@ public class MenuManager
 		btn11.setUrl(
 				"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ GongzhonghaoInfo.appID+"&"
-						+ "redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/oauthServlet&response_type=code&"
+						+ "redirect_uri="
+						+ GongzhonghaoInfo.URL
+						+ "oauthServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 		//http://7891556.cn/easyrun/
 		ViewButton btn12 = new ViewButton();
@@ -37,7 +39,9 @@ public class MenuManager
 		btn12.setUrl(
 				"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ GongzhonghaoInfo.appID+"&"
-						+ "redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/ShoppingServlet&response_type=code&"
+						+ "redirect_uri="
+						+ GongzhonghaoInfo.URL
+						+ "ShoppingServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 
 		ViewButton btn13 = new ViewButton();
@@ -46,7 +50,9 @@ public class MenuManager
 		btn13.setUrl(
 				"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ GongzhonghaoInfo.appID+"&"
-						+ "redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/MarathonRegisterServlet&response_type=code&"
+						+ "redirect_uri="
+						+ GongzhonghaoInfo.URL
+						+ "MarathonRegisterServlet&response_type=code&"
 						+ "scope=snsapi_userinfo&state=STATE#wechat_redirect");
 		
 		ClickButton btn21 = new ClickButton();
