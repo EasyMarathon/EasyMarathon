@@ -14,9 +14,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="bg/css/default.css">
 <link href="bg/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="bg/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="bg/PersonCenter/css/animate.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/simple-line-icons.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/font.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/app.css" type="text/css" /> 
 <!--[if IE]>
 		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
 	<![endif]-->
@@ -28,22 +33,29 @@
 	Map<Integer, String> event=(Map<Integer, String>)request.getAttribute("event");
 	%>
 
- 	<form enctype="multipart/form-data" action="MasterUploadPic" method="post">
+ 	<form enctype="multipart/form-data" data-validate="parsley" action="MasterUploadPic" method="post">
 		<div class="htmleaf-container" style="min-height: 300px">
 			<div class="container kv-main">
- 				<br> <input id="file-0" class="file" type="file" name="picture"> <br>  
+ 				<br>   
+				<div class="row">
 				<div class="col-sm-6">
+				<section class="panel panel-default">
+				<header class="panel-heading">
+                        <span class="h4">摄影师上传照片</span>
+                        <h5 class="h6"></h5>
+                </header>
+				<div class="panel-body">
 				<div class="form-group">
 					<label>摄影师姓名</label>
-                    <input type="text" name="authorName"/>
+                    <input type="text" data-required="true" class="form-control" name="authorName"/>
 				</div>
 				<div class="form-group">
 					<label>价格</label>
-                    <input type="text" name="price"/>
+                    <input type="text" data-required="true" class="form-control" name="price"/>
 				</div>
-				</div>
+				
 				<div class="form-group">
-					<label for="name">赛事所在地</label> <select class="form-control"
+					<label for="name">赛事所在地</label> <select data-required="true" class="form-control"
 						name="eventID">	
 						<%
 							for (Map.Entry<Integer, String> entry : event.entrySet()) {  						  
@@ -58,8 +70,12 @@
 			         	%>
 					</select> 
 				</div>
-
+				<input id="file-4" class="file" type="file" name="picture"> <br>
 				<button type="submit" class="btn btn-primary">提交</button>
+				</div>
+				</div>
+				</section>
+				</div>
 			</div>
 		</div>
 
@@ -131,5 +147,13 @@
 	        */
 	    });
 		</script>
+<script src="bg/PersonCenter/js/jquery.min.js"></script>
+<!-- parsley -->
+<script src="bg/PersonCenter/js/parsley/parsley.min.js"></script>
+<script src="bg/PersonCenter/js/parsley/parsley.extend.js"></script>
+<script src="bg/PersonCenter/js/app.plugin.js"></script>
+<script type="text/javascript" src="bg/PersonCenter/js/jPlayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="bg/PersonCenter/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+<script type="text/javascript" src="bg/PersonCenter/js/jPlayer/demo.js"></script>
 </body>
 </html>
