@@ -28,7 +28,7 @@
 	Map<Integer, String> event=(Map<Integer, String>)request.getAttribute("event");
 	%>
 
- 	<form enctype="multipart/form-data" action="bg/MasterUploadPic" method="post">
+ 	<form enctype="multipart/form-data" action="MasterUploadPic" method="post">
 		<div class="htmleaf-container" style="min-height: 300px">
 			<div class="container kv-main">
  				<br> <input id="file-0" class="file" type="file" name="picture"> <br>  
