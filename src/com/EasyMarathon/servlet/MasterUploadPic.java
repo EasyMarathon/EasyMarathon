@@ -128,7 +128,7 @@ public class MasterUploadPic extends HttpServlet {
                     //写入数据库
                     PicService picservice = new PicService();
                     System.out.println("fileChildl 路径="+fileChild.getAbsolutePath());
-            		if (picservice.uploadPicService(fileChild, eventID,authorName,price))
+            		if (picservice.uploadPicService(fileChild, eventID,authorName,price,request))
             			request.getRequestDispatcher("bg/uploadsuccess.jsp").forward(request, response);
             		else
             			response.sendRedirect("bg/upLoadunsuccess.jsp");

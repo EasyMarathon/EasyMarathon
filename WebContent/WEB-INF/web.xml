@@ -90,6 +90,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MasterUploadPic</servlet-name>
-    <url-pattern>/bg/MasterUploadPic</url-pattern>
+    <url-pattern>/MasterUploadPic</url-pattern>
   </servlet-mapping>
 </web-app>

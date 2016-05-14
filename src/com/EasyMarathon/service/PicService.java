@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.sql.Connection;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.ImageIcon;
 
 import org.apache.struts2.ServletActionContext;
@@ -144,7 +145,7 @@ public class PicService
 		}
 	}
 
-	public boolean uploadPicService(File picture, String eventId, String authorName, int price)
+	public boolean uploadPicService(File picture, String eventId, String authorName, int price, HttpServletRequest request)
 	{
 		System.out.println("摄影师上传照片中...");
 		conn = DaoBase.getConnection(true);
@@ -169,9 +170,9 @@ public class PicService
 			return false;
 		}
 		// int aID=120;
-		String iconPath = ServletActionContext.getServletContext()
+		String iconPath = request.getSession().getServletContext()
 				.getRealPath("/") + "bg/icon/EasyMarathon.png";
-		String path = ServletActionContext.getServletContext().getRealPath("/")
+		String path = request.getSession().getServletContext().getRealPath("/")
 				+ "bg/imageCamera" + "/" + eventID + "/";
 		System.out.println("摄影师目录：" + path);
 		System.out.println("水印目录：" + iconPath);
