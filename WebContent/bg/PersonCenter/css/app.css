@@ -1324,6 +1324,12 @@ fieldset[disabled] .btn-primary.active {
   background-color: #1ab667;
   border-color: #1ab667;
 }
+.btn-succeed {
+  color: #fff !important;
+  background-color: #545ca6;
+  border-color: #545ca6;
+}
+
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active,
@@ -2430,6 +2436,12 @@ fieldset[disabled] .btn-dark.active {
   background-color: #4cb6cb;
   color: #eaf6f9;
 }
+
+.bgn-info {
+  background-color: #545ca6;
+  color: #eaf6f9;
+}
+
 .bg-info.lt,
 .bg-info .lt {
   background-color: #62bcce;
@@ -3355,6 +3367,11 @@ a.bg-light:focus {
   height:128px;
   display: inline-block;
 }
+.thumb-lb {
+  width: 128px;
+  height:170px;
+  display: inline-block;
+}
 .thumb-md {
   width: 64px;
   display: inline-block;
@@ -3386,6 +3403,13 @@ a.bg-light:focus {
   max-width: 100%;
   vertical-align: middle;
 }
+.thumb-lb img {
+  width: 128px;
+  height:160.7px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
 .img-full {
   width: 100%;
 }

@@ -68,7 +68,7 @@ public class MarathonRegisterServlet extends HttpServlet
 				UserBean user=userdao.GetUser(wechatID);
 				if(user==null)
 				{
-					System.out.println("用户不存在...");
+					System.out.println("这是新用户...");
 					UserBean new_user=new UserBean();
 					new_user.setWechatName(snsUserInfo.getNickname());
 					new_user.setHeadImgUrl(snsUserInfo.getHeadImgUrl());
@@ -82,20 +82,20 @@ public class MarathonRegisterServlet extends HttpServlet
 					System.out.println(new_user.getGender());
 					userdao.AddBaseUser(new_user);
 					DaoBase.close(conn, null, null);
-					System.out.println("新用户，进入完善信息页面");
+					System.out.println("新用户写入数据库...");
 					request.setAttribute("snsUserInfo", snsUserInfo);
 					request.getRequestDispatcher("bg/marathonRegister.jsp").forward(request, response);
 				}
-				else if(checkIfPerfect(user))//用户已完善过信息
+				else if(checkIfPerfect(user))
 				{
 					DaoBase.close(conn, null, null);
-					System.out.println("用户已完善过信息，进入赛事报名页面");
+					System.out.println("老用户，信息已完善，跳转赛事选择界面");
 					request.setAttribute("snsUserInfo", snsUserInfo);
 					request.getRequestDispatcher("/MarathonRegister2").forward(request, response);
 				}
 				else if(!checkIfPerfect(user)){
 					DaoBase.close(conn, null, null);
-					System.out.println("用户未完善信息，进入完善信息页面");
+					System.out.println("老用户，信息未完善");
 					request.setAttribute("snsUserInfo", snsUserInfo);
 					request.getRequestDispatcher("bg/marathonRegister.jsp").forward(request, response);;
 				}
@@ -103,7 +103,7 @@ public class MarathonRegisterServlet extends HttpServlet
 			catch (Exception e)
 			{
 				e.printStackTrace();
-				System.out.println("报错");
+				System.out.println("未知错误");
 				response.sendRedirect("bg/error.jsp");
 			}
 		}

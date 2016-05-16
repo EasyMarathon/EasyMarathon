@@ -51,7 +51,7 @@ public class MarathonRegister3 extends HttpServlet {
 		try{
 			System.out.println("----运动员信息录入数据库----");
 			if (!athletedao.AddAthleteBase(athlete)){
-				System.out.println("运动员信息添加失败\n报名失败");
+				System.out.println("报名失败");
 				UserBean user = new UserDao(conn).GetUser(wechatID);
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);//运动员注册时的信息

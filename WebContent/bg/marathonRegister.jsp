@@ -4,18 +4,22 @@
 <!DOCTYPE html>
 <html lang="en" class="app">
 <head>  
-  <meta charset="utf-8" />
-  <title>完善信息</title>
-  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="stylesheet" href="bg/PersonCenter/js/jPlayer/jplayer.flat.css" type="text/css" />
-  <link rel="stylesheet" href="bg/PersonCenter/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="bg/PersonCenter/css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="bg/PersonCenter/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="bg/PersonCenter/css/simple-line-icons.css" type="text/css" />
-  <link rel="stylesheet" href="bg/PersonCenter/css/font.css" type="text/css" />
-  <link rel="stylesheet" href="bg/PersonCenter/css/app.css" type="text/css" />  
-  <link href="bg/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<title>完善信息</title>
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="bg/css/default.css">
+<link href="bg/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="bg/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="bg/PersonCenter/css/animate.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/simple-line-icons.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/font.css" type="text/css" />
+<link rel="stylesheet" href="bg/PersonCenter/css/app.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="js/ie/html5shiv.js"></script>
     <script src="js/ie/respond.min.js"></script>
@@ -30,8 +34,8 @@
 %>
 <section class="vbox">
     <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-      <div class="navbar-header aside bg-info nav-xs">
-        <a href="index.html" class="navbar-brand text-lt">
+      <div class="navbar-header aside bgn-info nav-xs">
+        <a class="navbar-brand text-lt" style="color:#fff">
           <span class="hidden-nav-xs m-l-sm">完善信息</span>
         </a>
       </div>      
@@ -132,7 +136,7 @@
                         	</div>
 		              </div>
                         </section>
-                        	<button type="submit" class="btn btn-success btn-s-xs">提交</button>
+                        	<button type="submit" class="btn btn-succeed btn-s-xs" style="color:#545ca6">提交</button>
                         </form>
                         </div>
                         </div>	
@@ -192,15 +196,11 @@
 	        });
 	    });
 		</script>
-
-<script src="bg/js/fileinput.js" type="text/javascript"></script>	
-<script src="bg/js/fileinput_locale_zh.js" type="text/javascript"></script>	
-<!-- Bootstrap -->
-<script src="bg/bootstrap-3.3.5-dist/js/bootstrap.min.js"	type="text/javascript"></script>
-
-<!-- App -->
-<script src="bg/PersonCenter/js/app.js"></script>  
-<script src="bg/PersonCenter/js/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script> 
+	<script src="bg/js/fileinput.js" type="text/javascript"></script>	
+	<script src="bg/js/fileinput_locale_zh.js" type="text/javascript"></script>	
+	<script src="bg/bootstrap-3.3.5-dist/js/bootstrap.min.js"	type="text/javascript"></script> 	
+<script src="bg/PersonCenter/js/jquery.min.js"></script>
 <!-- parsley -->
 <script src="bg/PersonCenter/js/parsley/parsley.min.js"></script>
 <script src="bg/PersonCenter/js/parsley/parsley.extend.js"></script>
@@ -208,6 +208,5 @@
 <script type="text/javascript" src="bg/PersonCenter/js/jPlayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="bg/PersonCenter/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
 <script type="text/javascript" src="bg/PersonCenter/js/jPlayer/demo.js"></script>
-
 </body>
 </html>

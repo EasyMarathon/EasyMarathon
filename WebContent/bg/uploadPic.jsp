@@ -70,8 +70,8 @@
 			         	%>
 					</select> 
 				</div>
-				<input id="file-4" class="file" type="file" name="picture"> <br>
-				<button type="submit" class="btn btn-primary">提交</button>
+				<input id="file-1" class="file" type="file" name="picture"> <br>
+				<button type="submit" class="btn btn-primary pull-left">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
 				</div>
 				</div>
 				</section>
@@ -94,7 +94,6 @@
 	        uploadUrl: '#', // you must set a valid URL here else you will get an error
 	        allowedFileExtensions : ['jpeg', 'jpg', 'png','gif'],
 	        overwriteInitial: false,
-	        maxFileSize: 1000,
 	        maxFilesNum: 10,
 	        //allowedFileTypes: ['image', 'video', 'flash'],
 	        slugCallback: function(filename) {

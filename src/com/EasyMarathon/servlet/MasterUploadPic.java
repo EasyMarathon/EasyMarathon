@@ -95,13 +95,13 @@ public class MasterUploadPic extends HttpServlet {
                 if(!item.isFormField()){ //是图片          
                 	//获取路径名  
                     String value = item.getName();
-                    System.out.println("item.name:"+name);
-                    System.out.println("item.value:"+value);
+//                    System.out.println("item.name:"+name);
+//                    System.out.println("item.value:"+value);
                     int start = value.lastIndexOf("\\");
                     //截取 上传文件的 字符串名字，加1是 去掉反斜杠
                     filename = value.substring(start+1);
-                    System.out.println("filename:"+filename);//filename包含后缀
-                    System.out.println("path: "+path);
+//                    System.out.println("filename:"+filename);//filename包含后缀
+//                    System.out.println("path: "+path);
                     File fileParent = new File(path);
                     if  (!fileParent .exists()  && !fileParent.isDirectory())      
                     {       
@@ -111,7 +111,7 @@ public class MasterUploadPic extends HttpServlet {
                     MD5 md5 = new MD5();
                     String time = Long.toString(System.currentTimeMillis());
                     filename=md5.md5Encode(filename+time)+".jpg";
-                    System.out.println("New filename:"+filename);//filename包含后缀
+//                    System.out.println("New filename:"+filename);//filename包含后缀
                     File fileChild = new File(path,filename);
                     OutputStream out = new FileOutputStream(fileChild);  
                     InputStream in = item.getInputStream();  
@@ -129,19 +129,18 @@ public class MasterUploadPic extends HttpServlet {
                     PicService picservice = new PicService();
                     System.out.println("fileChildl 路径="+fileChild.getAbsolutePath());
             		if (picservice.uploadPicService(fileChild, eventID,authorName,price,request))
-            			request.getRequestDispatcher("bg/uploadsuccess.jsp").forward(request, response);
+            			request.getRequestDispatcher("bg/masterUploadsuccess.jsp").forward(request, response);
             		else
-            			response.sendRedirect("bg/upLoadunsuccess.jsp");
+            			request.getRequestDispatcher("bg/masterUploadfailed.jsp").forward(request, response);
                 }  
             }
         }catch (FileUploadException e) {  
         	e.printStackTrace();  
-        	response.sendRedirect("bg/upLoadunsuccess.jsp");
-//        	request.getRequestDispatcher("bg/upLoadunsuccess.jsp").forward(request, response);
+        	request.getRequestDispatcher("bg/masterUploadfailed.jsp").forward(request, response);
 	    }  
 	    catch (Exception e) {           
 	        e.printStackTrace();  
-	        response.sendRedirect("bg/upLoadunsuccess.jsp");
+	        request.getRequestDispatcher("bg/masterUploadfailed.jsp").forward(request, response);
 	    }
 	}
 }

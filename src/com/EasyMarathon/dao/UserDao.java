@@ -86,7 +86,7 @@ public class UserDao
 				+ " where WechatID=?";
 		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
 		{
-			System.out.println("--Dao.UpdUser--");
+/*			System.out.println("--Dao.UpdUser--");
 			System.out.println("getUserName="+user.getUserName());
 			System.out.println("getCelphone="+user.getCelphone());
 			System.out.println("getEmail="+user.getEmail());
@@ -98,7 +98,7 @@ public class UserDao
 			System.out.println("getWeight="+user.getWeight());
 			System.out.println("getUrgencyContact="+user.getUrgencyContact());
 			System.out.println("getUrgencyPhone="+user.getUrgencyPhone());
-			System.out.println("getWechatID="+user.getWechatID());
+			System.out.println("getWechatID="+user.getWechatID());*/
 			
 			ps1.setString(1, user.getUserName());
 			ps1.setString(2, user.getCelphone());

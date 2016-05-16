@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.EasyMarathon.bean.Athlete;
+import com.EasyMarathon.bean.ConfirmData;
 
 public class AthleteDao
 {
@@ -74,5 +76,67 @@ public class AthleteDao
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean updateAthlete(Athlete athlete){
+		String WechatID = athlete.getWechatID();
+		String AthleteID = athlete.getAthleteID();
+		int EventID = athlete.getEventID();
+		final String SQL = "update Athletes set AthleteID=?,state=1 where WechatID=? and EventID=?";
+		try(PreparedStatement ps1 = conn.prepareStatement(SQL)){
+			ps1.setString(1, AthleteID);
+			ps1.setString(2, WechatID);
+			ps1.setInt(3, EventID);
+			
+			ps1.executeUpdate();
+			return true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean updateAthleteReject(Athlete athlete){//ÉóºË->¾Ü¾ø
+		String WechatID = athlete.getWechatID();
+		int EventID = athlete.getEventID();
+		final String SQL = "update Athletes set state=2 where WechatID=? and EventID=?";
+		try(PreparedStatement ps1 = conn.prepareStatement(SQL)){
+			ps1.setString(1, WechatID);
+			ps1.setInt(2, EventID);
+			
+			ps1.executeUpdate();
+			return true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public ArrayList<ConfirmData> findAllNotChecked(){
+		final String SQL = "select UserName, EventName, IdentityCard, Celphone, UrgencyContact,UrgencyPhone,IdentityPic,Athletes.WechatID,Athletes.EventID from Athletes, Users, Events"
+						  +" where Athletes.state=0 and Athletes.WechatID=Users.WechatID and Events.EventID=Athletes.EventID";
+		ArrayList<ConfirmData> dataList = new ArrayList<ConfirmData>();
+		try (PreparedStatement ps1 = conn.prepareStatement(SQL))
+		{
+			ResultSet rs1;
+			rs1 = ps1.executeQuery();
+			while (rs1.next()){
+				String name = rs1.getString(1);
+				String eventName = rs1.getString(2);
+				String IDcard = rs1.getString(3);
+				String celphone = rs1.getString(4);
+				String urgencyName = rs1.getString(5);
+				String urgencyPhone = rs1.getString(6);
+				String IdentityPic = rs1.getString(7);
+				String wechatID = rs1.getString(8);
+				int eventID = rs1.getInt(9);
+				ConfirmData confirmData = new ConfirmData(name,eventName,IDcard,celphone,urgencyName,urgencyPhone,IdentityPic,wechatID,eventID);
+				dataList.add(confirmData);
+			}
+			return dataList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

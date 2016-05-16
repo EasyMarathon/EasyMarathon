@@ -6,7 +6,7 @@
 <html lang="en" class="app">
 <head>  
   <meta charset="utf-8" />
-  <title>绑定成功</title>
+  <title>操作成功</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="PersonCenter/js/jPlayer/jplayer.flat.css" type="text/css" />
@@ -28,18 +28,10 @@
     <div class="row m-n">
       <div class="col-sm-4 col-sm-offset-4">
         <div class="text-center m-b-lg"><br><br><br><br><br><br>
-          <h1>绑定成功</h1><br><br>
+          <h1>操作成功</h1><br><br>
         </div>
         <div class="list-group auto m-b-sm m-b-lg">
-           <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=<%=GongzhonghaoInfo.appID %>&redirect_uri=<%=GongzhonghaoInfo.URL %>oauthServlet&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect" class="list-group-item">
-            <i class="fa fa-chevron-right icon-muted" ></i>
-            <i class="fa fa-cloud" style="color:#d0d0d0"></i>&nbsp;&nbsp;&nbsp;重新绑定
-          </a>  
-          <a href="tel://15700082120" class="list-group-item">
-            <i class="fa fa-chevron-right icon-muted"></i>
-            <span class="badge bg-info lt">10000</span>
-            <i class="fa fa-fw fa-phone icon-muted"></i>&nbsp;&nbsp;联系我们
-          </a>
+           
         </div>
       </div>
     </div>

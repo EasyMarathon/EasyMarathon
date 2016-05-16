@@ -47,7 +47,7 @@
  	<form enctype="multipart/form-data" action="UserUpload" method="post">
 		<div class="htmleaf-container" style="min-height: 300px">
 			<div class="container kv-main">
- 				<br> <input id="file-0" class="file" type="file" name="picture"> <br>  
+ 				<br> <input id="file-1" class="file" type="file" name="picture"> <br>  
 
 				<div class="form-group">
 					<div style="display:none">
@@ -69,7 +69,7 @@
 					</select> 
 				</div>
 
-				<button type="submit" class="btn btn-primary">提交</button>
+				<button type="submit" class="btn btn-primary pull-right">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
 			</div>
 		</div>
 
@@ -88,7 +88,6 @@
 	        uploadUrl: '#', // you must set a valid URL here else you will get an error
 	        allowedFileExtensions : ['jpeg', 'jpg', 'png','gif'],
 	        overwriteInitial: false,
-	        maxFileSize: 1000,
 	        maxFilesNum: 10,
 	        //allowedFileTypes: ['image', 'video', 'flash'],
 	        slugCallback: function(filename) {
