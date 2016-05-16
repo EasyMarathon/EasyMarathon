@@ -96,6 +96,22 @@ public class AthleteDao
 		}
 	}
 	
+	public boolean updateAthleteReject(Athlete athlete){//ÉóºË->¾Ü¾ø
+		String WechatID = athlete.getWechatID();
+		int EventID = athlete.getEventID();
+		final String SQL = "update Athletes set state=2 where WechatID=? and EventID=?";
+		try(PreparedStatement ps1 = conn.prepareStatement(SQL)){
+			ps1.setString(1, WechatID);
+			ps1.setInt(2, EventID);
+			
+			ps1.executeUpdate();
+			return true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public ArrayList<ConfirmData> findAllNotChecked(){
 		final String SQL = "select UserName, EventName, IdentityCard, Celphone, UrgencyContact,UrgencyPhone,IdentityPic,Athletes.WechatID,Athletes.EventID from Athletes, Users, Events"
 						  +" where Athletes.state=0 and Athletes.WechatID=Users.WechatID and Events.EventID=Athletes.EventID";

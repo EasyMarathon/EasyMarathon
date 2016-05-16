@@ -6,7 +6,7 @@
 <html lang="en" class="app">
 <head>  
   <meta charset="utf-8" />
-  <title>易跑商城</title>
+  <title>信息审核</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="bg/PersonCenter/js/jPlayer/jplayer.flat.css" type="text/css" />
@@ -43,6 +43,7 @@
                           <ul  class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
                             <%for(int i=0;i<dataList.size();i++){ %>
                             <li  class="list-group-item">
+                            <form action="ConfirmInfoReject" method="post">
                             <a href="#" data-toggle="modal" data-target="#<%=i %>" class="thumb-lb pull-left m-r-sm">
                                 <%	String Path = "bg/UserPicture/UserInfo/"+dataList.get(i).getIdentityPic();
                             		System.out.println("证件照存储路径="+Path);
@@ -50,6 +51,7 @@
                                 <img src="<%=Path %>" >
                               </a>
                               <a class="clear">
+                              
                                 <strong >姓名：<%=dataList.get(i).getName() %></strong>
                                 <small class="pull-right" style="color:#fb3504;">待审核</small>
                                 <br><br>
@@ -58,10 +60,18 @@
                                 <small>联系方式：<%=dataList.get(i).getPhone() %></small><br>
                                 <small>紧急联系人：<%=dataList.get(i).getUrgencyName() %></small><br>
                                 <small>紧急联系人号码：<%=dataList.get(i).getUrgencyPhone() %></small><br>
+                                <div style="display:none">
+                				<input type="text" name="eventID" value="<%=dataList.get(i).getEventID() %>">
+								</div>
+								<div style="display:none">
+                				<input type="text" name="wechatID" value="<%=dataList.get(i).getWechatID() %>">
+								</div>
 								<small class="pull-right">
-                                <button type="submit" data-toggle="modal" data-target="#R<%=i %>" class="btn btn-success btn-s-xs">通过审核</button>
+								<button type="submit" class="btn btn-danger btn-s-xs">拒绝审核</button>
+                                <button type="button" data-toggle="modal" data-target="#R<%=i %>" class="btn btn-success btn-s-xs">通过审核</button>
 								</small>
                               </a>
+                              </form>
                             </li>
 							<%} %>
                           </ul>

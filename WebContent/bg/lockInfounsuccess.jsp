@@ -5,7 +5,7 @@
 <html lang="en" class="app">
 <head>  
   <meta charset="utf-8" />
-  <title>绑定失败</title>
+  <title>操作失败</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="PersonCenter/js/jPlayer/jplayer.flat.css" type="text/css" />
@@ -27,7 +27,7 @@
     <div class="row m-n">
       <div class="col-sm-4 col-sm-offset-4">
         <div class="text-center m-b-lg"><br><br><br><br><br><br>
-          <h1>绑定失败</h1><br><br>
+          <h1>操作失败</h1><br><br>
         </div>
         <div class="list-group auto m-b-sm m-b-lg">
            

@@ -114,4 +114,15 @@
     <url-pattern>/ConfirmInfo2</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ConfirmInfoReject</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.ConfirmInfoReject
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmInfoReject</servlet-name>
+    <url-pattern>/ConfirmInfoReject</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -86,7 +86,7 @@ public class MarathonRegisterServlet extends HttpServlet
 					request.setAttribute("snsUserInfo", snsUserInfo);
 					request.getRequestDispatcher("bg/marathonRegister.jsp").forward(request, response);
 				}
-				else if(checkIfPerfect(user))//鐢ㄦ埛宸插畬鍠勮繃淇℃伅
+				else if(checkIfPerfect(user))
 				{
 					DaoBase.close(conn, null, null);
 					System.out.println("老用户，信息已完善，跳转赛事选择界面");
