@@ -3403,6 +3403,13 @@ a.bg-light:focus {
   max-width: 100%;
   vertical-align: middle;
 }
+.thumb-lb img {
+  width: 128px;
+  height:160.7px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
 .img-full {
   width: 100%;
 }
