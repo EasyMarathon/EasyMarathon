@@ -31,7 +31,7 @@
           <h1>上传成功</h1><br><br>
         </div>
         <div class="list-group auto m-b-sm m-b-lg">
-          <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=<%=GongzhonghaoInfo.appID %>&redirect_uri=http://15064r19x0.imwork.net/EasyMarathon/oauthServlet&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect" class="list-group-item">
+          <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=<%=GongzhonghaoInfo.appID %>&redirect_uri=<%=GongzhonghaoInfo.URL %>oauthServlet&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect" class="list-group-item">
             <i class="fa fa-chevron-right icon-muted" ></i>
             <i class="fa fa-cloud" style="color:#d0d0d0"></i>&nbsp;&nbsp;&nbsp;继续上传
           </a>

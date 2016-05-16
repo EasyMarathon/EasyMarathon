@@ -95,9 +95,6 @@ public class CoreService {
 					if (flag) {
 						if (aID >= 0) {
 							System.out.println("AthleteID="+aID);
-							//http://7891556.cn/easyrun/
-							//http://15064r19x0.imwork.net/EasyMarathon/
-							
 							textMessage.setContent("<a href=\""
 									+ URL
 									+ "bg/FindPicServlet?eventID="
@@ -116,6 +113,11 @@ public class CoreService {
 								+ URL
 								+ "MasterUploadPre"
 								+ "\">点击上传摄影师照片！</a>";
+					}else if(ss.equals("#002admin")){
+						res +="<a href=\""
+								+ URL
+								+ "ConfirmInfo"
+								+ "\">点击进入运动员报名审核页面！</a>";
 					}else{
 						ArrayList<EventBean> events = AthleteService.GetEvents();
 						res +="对不起，我现在还不能理解你的意思。\n\n"

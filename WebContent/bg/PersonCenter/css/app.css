@@ -3367,6 +3367,11 @@ a.bg-light:focus {
   height:128px;
   display: inline-block;
 }
+.thumb-lb {
+  width: 128px;
+  height:170px;
+  display: inline-block;
+}
 .thumb-md {
   width: 64px;
   display: inline-block;

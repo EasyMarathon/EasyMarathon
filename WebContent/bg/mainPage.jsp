@@ -171,7 +171,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="events.html">
+                      <a href="">
                         <b class="badge bg-primary pull-right">6</b>
                         <span class="font-bold">新品上市</span>
                       </a>
@@ -184,11 +184,6 @@
                     <li>
                       <a href="mainPage.jsp">
                         <span class="font-bold">用户拍摄</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="genres.html">
-                        <span class="font-bold">我的照片</span>
                       </a>
                     </li>
                     <li class="m-b hidden-nav-xs"></li>

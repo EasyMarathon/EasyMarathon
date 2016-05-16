@@ -30,7 +30,7 @@
 </head>
 <body onload="init();">
 <%
-	//SNSUserInfo user = (SNSUserInfo)session.getAttribute("snsUserInfo"); 
+	SNSUserInfo user = (SNSUserInfo)session.getAttribute("snsUserInfo"); 
 %>
 <section class="vbox">
     <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
@@ -124,9 +124,9 @@
 	                          <label>紧急联系人电话</label>
 	                          <input type="text" class="form-control" data-required="true" name="user.urgencyPhone"/>
 	                        </div>
-		                   <%-- <div style="display:none"><!-- 微信号，主键 -->
+		                   <div style="display:none"><!-- 微信号，主键 -->
 								<input value="<%=user.getOpenId()%>" type="hidden" value="1" id="txt_width" name="user.wechatID"/>
-							</div> --%>
+							</div>
 							<div class="form-group">
 	                        <div class="checkbox i-checks">
 	                          <label>

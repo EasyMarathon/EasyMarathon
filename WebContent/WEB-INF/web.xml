@@ -92,4 +92,26 @@
     <servlet-name>MasterUploadPic</servlet-name>
     <url-pattern>/MasterUploadPic</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ConfirmInfo</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.ConfirmInfo
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmInfo</servlet-name>
+    <url-pattern>/ConfirmInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ConfirmInfo2</servlet-name>
+    <servlet-class>
+			com.EasyMarathon.servlet.ConfirmInfo2
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmInfo2</servlet-name>
+    <url-pattern>/ConfirmInfo2</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
