@@ -169,7 +169,16 @@ public class PicService
 			System.out.println("图片未识别");
 			return false;
 		}
-		// int aID=120;
+		//int aID=1206;
+		request.setAttribute("AthleteID", aID);
+		
+		//******此处添加人脸识别代码，返回参数：1.姓名  2.匹配出来的图片路径*******//
+		String name = "张三";//这里填识别出来的姓名
+		String pictureURL = "bg/9f360c5ab7736510df54c882e9dbf188.jpg";//这里填识别出来匹配的图片路径
+		request.setAttribute("Name", name);
+		request.setAttribute("PictureURL", pictureURL);
+		
+		
 		String iconPath = request.getSession().getServletContext()
 				.getRealPath("/") + "bg/icon/EasyMarathon.png";
 		String path = request.getSession().getServletContext().getRealPath("/")

@@ -6,7 +6,7 @@
 <html lang="en" class="app">
 <head>  
   <meta charset="utf-8" />
-  <title>上传成功</title>
+  <title>装备指南</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="bg/PersonCenter/js/jPlayer/jplayer.flat.css" type="text/css" />
@@ -23,32 +23,45 @@
     <script src="js/ie/excanvas.js"></script>
   <![endif]-->
 </head>
-<%
-	String name = (String)request.getAttribute("Name");
-	String pictureURL = (String)request.getAttribute("PictureURL");
-	int AthleteID = (Integer)request.getAttribute("AthleteID");
-%>
 <body class="">
     <section id="content">
     <div class="row m-n">
       <div class="col-sm-4 col-sm-offset-4">
-        <div class="text-center m-b-lg"><br><br>
-          <h1>上传成功</h1>
-          <label style="color:#ff6633">该照片已经识别完成，识别结果如下</label>
-          <br>
+        <div class="text-center m-b-lg"><br>
+          <h2>马拉松的那些正经装备，<br>你造吗？</h2><br>
+          <label style="color:#ff6633">推送日期&nbsp;&nbsp;&nbsp;2016.05.19 08:10</label>
         </div>
         <div class="list-group auto m-b-sm m-b-lg">
           <a class="list-group-item">
-            <i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;&nbsp;人脸识别匹配结果
+          	<i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;运动眼镜 Nike SHOW X2 E
           </a>
-          <img src="<%=pictureURL %>" style="width:100%" class="list-group-item">
-
+          <img src="<%=GongzhonghaoInfo.URL+"articlePic/glass.jpg" %>" style="width:100%" class="list-group-item">
           <a class="list-group-item">
-            <i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;&nbsp;姓名：<%=name %>
+          	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nike光学品质镜片可以为佩戴者提供高质量的UVA以及UVB射线保护，
+          	而且这款眼镜很贴合面部以及脸的轮廓，不用担心运动起来上下摆动的问题。
           </a>
+        
           <a class="list-group-item">
-            <i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;&nbsp;号码牌：<%=AthleteID %>
+          	<i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;压缩小腿套
           </a>
+          <img src="<%=GongzhonghaoInfo.URL+"articlePic/leg.jpg" %>" style="width:100%" class="list-group-item">
+          <a class="list-group-item">
+          	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小腿套可以帮助缓冲和吸收肌肉、静脉和关节的震颤情形，
+          	缓解长时间跑步后所产生的肌肉酸痛感。 
+          	轻量化材质和防撕裂面料结构能够帮助提升运动表现，
+          	 是比赛中及鲜亮又实用的单品。
+          </a>
+          
+          <a class="list-group-item">
+          	<i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;严肃魔术帽
+          </a>
+          <img src="<%=GongzhonghaoInfo.URL+"articlePic/maozi.jpg" %>" style="width:100%" class="list-group-item">
+          <a class="list-group-item">
+          	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以为这是魔术帽，你就输了，虽然说是严肃魔术帽，其实也没有那么严肃，
+          	魔术帽名称的来源是因为这顶帽子可以当作毛巾和护腕同时使用，非常神奇。
+          	是每次跑马拉松时必备的单品。
+          </a>
+          
         </div>
       </div>
     </div>

@@ -2,14 +2,15 @@ package com.EasyMarathon.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import org.liufeng.course.message.resp.TextMessage;
-
+import com.EasyMarathon.message.resp.*;
 import com.EasyMarathon.bean.EventBean;
 import com.EasyMarathon.bean.GongzhonghaoInfo;
+import com.EasyMarathon.message.resp.Article;
+import com.EasyMarathon.message.resp.NewsMessage;
 import com.EasyMarathon.util.MessageUtil;
 
 /**
@@ -73,7 +74,86 @@ public class CoreService {
 						}
 						textMessage.setContent(res);
 						respXml = MessageUtil.messageToXml(textMessage);
-						// respXml = MessageUtil.messageToXml(textMessage);
+					}else if (eventKey.equals("hot")) {		//热门话题
+						Article article = new Article();
+						String description = "中国六盘水与美国夏威夷“牵手”同跑马拉松跑步\n\n"
+								+ "中新网  2016-05-17 09:25\n\n"
+								+ "【摘要】\n“2016凉都·六盘水夏季国际马拉松赛”将于7月23日开跑，这项赛事与夏威夷举行的火奴鲁鲁马拉松赛结为“姊妹马拉松赛”。";
+						String url = GongzhonghaoInfo.URL+"article_hot.jsp";
+						String picUrl = GongzhonghaoInfo.URL+"articlePic/article_hot.jpg";
+						
+						article.setTitle("热门话题");
+						article.setDescription(description);
+						article.setPicUrl(picUrl);
+						article.setUrl(url);
+						List<Article> articleList = new ArrayList<Article>();
+						articleList.add(article);
+						//创建图文消息
+						NewsMessage newsMessage = new NewsMessage();
+						newsMessage.setToUserName(fromUserName);
+						newsMessage.setFromUserName(toUserName);
+						newsMessage.setCreateTime(new Date().getTime());
+						newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+						newsMessage.setArticleCount(articleList.size());
+						newsMessage.setArticles(articleList);
+						
+						respXml = MessageUtil.messageToXml(newsMessage);
+					}else if (eventKey.equals("view")) {	//装备指南
+						Article article = new Article();
+						
+						String description = "马拉松的那些正经装备，你造吗？\n"
+								+ "今天我们就来谈一谈马拉松装备的事，"
+								+ "当然不是告诉你如何在赛道上穿的最fashion最潮流，"
+								+ "而是实实在在地跟你说，这些装备都是做什么的。"
+								+ "至于偶尔在赛道上看到的一些时尚运动奇葩们，"
+								+ "其实只是在那边吓唬人的……所以，跑马拉松到底穿什么，"
+								+ "以及为什么这些正经的装备对于跑者来说如此的重要？ "
+								+ "我们找到了几位资深级别的跑友，"
+								+ "让他们坐下来与我们认真地谈一谈关于马拉松装备的心得。";
+						
+						String url = GongzhonghaoInfo.URL+"article_view.jsp";
+						String picUrl = GongzhonghaoInfo.URL+"articlePic/article_view.jpg";
+
+						article.setTitle("装备指南");
+						article.setDescription(description);
+						article.setPicUrl(picUrl);
+						article.setUrl(url);
+						List<Article> articleList = new ArrayList<Article>();
+						articleList.add(article);
+						//创建图文消息
+						NewsMessage newsMessage = new NewsMessage();
+						newsMessage.setToUserName(fromUserName);
+						newsMessage.setFromUserName(toUserName);
+						newsMessage.setCreateTime(new Date().getTime());
+						newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+						newsMessage.setArticleCount(articleList.size());
+						newsMessage.setArticles(articleList);
+						
+						respXml = MessageUtil.messageToXml(newsMessage);
+					}else if (eventKey.equals("tip")) {	//跑城攻略
+						Article article = new Article();
+						
+						String description = "马拉松新手必备攻略";
+						
+						String url = GongzhonghaoInfo.URL+"article_tip.jsp";
+						String picUrl = GongzhonghaoInfo.URL+"articlePic/article_tip.jpg";
+
+						article.setTitle("跑城攻略");
+						article.setDescription(description);
+						article.setPicUrl(picUrl);
+						article.setUrl(url);
+						List<Article> articleList = new ArrayList<Article>();
+						articleList.add(article);
+						//创建图文消息
+						NewsMessage newsMessage = new NewsMessage();
+						newsMessage.setToUserName(fromUserName);
+						newsMessage.setFromUserName(toUserName);
+						newsMessage.setCreateTime(new Date().getTime());
+						newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+						newsMessage.setArticleCount(articleList.size());
+						newsMessage.setArticles(articleList);
+						
+						respXml = MessageUtil.messageToXml(newsMessage);
 					}
 				}
 			}

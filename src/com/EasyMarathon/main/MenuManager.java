@@ -65,10 +65,10 @@ public class MenuManager
 		btn31.setType("click");
 		btn31.setKey("hot");
 
-		ViewButton btn32 = new ViewButton();
+		ClickButton btn32 = new ClickButton();
 		btn32.setName("装备指南");
-		btn32.setType("view");
-		btn32.setUrl("http://m.taobao.com");
+		btn32.setType("click");
+		btn32.setKey("view");
 
 		ClickButton btn33 = new ClickButton();
 		btn33.setName("跑城攻略");
