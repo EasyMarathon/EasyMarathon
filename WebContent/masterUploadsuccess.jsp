@@ -26,7 +26,7 @@
 <%
 	String name = (String)request.getAttribute("Name");
 	String pictureURL = (String)request.getAttribute("PictureURL");
-	int AthleteID = (Integer)request.getAttribute("AthleteID");
+	int AthleteID = Integer.parseInt((String)request.getAttribute("AthleteID"));
 %>
 <body class="">
     <section id="content">

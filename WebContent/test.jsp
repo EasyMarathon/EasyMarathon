@@ -1,144 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html> 
-<head> 
-<title>json</title> 
-<link rel="stylesheet" href="bg/test.css" type="text/css" />
-<script type="text/javascript">
-var list=[
-      	{"name":"中国", 
-      	"value":"86", 
-      	"province":[
-      		{"name":"浙江", 
-      		 "value":"310000", 
-      		 "city":
-          	 [
-      			{"name":"杭州","value":"杭州"}, 
-      			{"name":"温州","value":"温州"}, 
-      			{"name":"宁波","value":"宁波"}
-      	 	 ]
-      		}, 
-      		{"name":"湖北", 
-      		 "value":"430000", 
-      		 "city":
-      	     [
-      			{"name":"武汉","value":"wh"}, 
-      			{"name":"黄冈","value":"hg"}, 
-      			{"name":"襄阳","value":"xy"}
-      		 ]
-      		}, 
-      		{"name":"河北", 
-      		 "value":"100000", 
-      		 "city":
-      	     [
-      	     	{"name":"邯郸","value":"hd"}, 
-      			{"name":"保定","value":"bd"}, 
-      			{"name":"石家庄","value":"sjz"}
-      		 ]
-      		}, 
-      		{"name":"湖南", 
-      		 "value":"440000", 
-      		 "city":
-      	     [
-      		 	{"name":"长沙","value":"cs"}, 
-      			{"name":"株洲","value":"zz"}, 
-      			{"name":"衡阳","value":"hy"}
-      		 ]
-      		}
-      	]
-         }
-      ]; 
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.EasyMarathon.bean.GongzhonghaoInfo" %>
+<!DOCTYPE HTML>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title>热门话题</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="bg/PersonCenter/js/jPlayer/jplayer.flat.css" type="text/css" />
+  <link rel="stylesheet" href="bg/PersonCenter/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="bg/PersonCenter/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="bg/PersonCenter/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="bg/PersonCenter/css/font-awesome-ie7.min.css">
+  <link rel="stylesheet" href="bg/PersonCenter/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="bg/PersonCenter/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="bg/PersonCenter/css/app.css" type="text/css" />  
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+<body class="">
+    <section id="content">
+    <div class="row m-n">
+      <div class="col-sm-4 col-sm-offset-4">
+        <div class="text-center m-b-lg"><br><br>
+          <h1>热门话题</h1>
+          <label style="color:#ff6633">11</label>
+          <br>
+        </div>
+        <div class="list-group auto m-b-sm m-b-lg">
+          <a class="list-group-item">
+            <i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;&nbsp;人脸识别匹配结果
+          </a>
+          <img src="" style="width:100%" class="list-group-item">
 
-      function init(){ 
-      var _country=document.getElementById("country"); 
-      for(var e in list){ 
-      var opt_1=new Option(list[e].name,list[e].value); 
-      _country.add(opt_1); 
-      } 
-      } 
+          <a class="list-group-item">
+            <i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;&nbsp;姓名：
+          </a>
+          <a class="list-group-item">
+            <i class="fa fa-star icon-muted"></i>&nbsp;&nbsp;&nbsp;号码牌：
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="text-center padder clearfix">
+      <p>
+        <small>易跑平台开发小组<br>&copy; 2016</small>
+      </p>
+    </div>
+  </footer>
+  <!-- / footer -->
+  <script src="bg/PersonCenter/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="bg/PersonCenter/js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="bg/PersonCenter/js/app.js"></script>  
+  <script src="bg/PersonCenter/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="PersonCenter/js/app.plugin.js"></script>
+  <script type="text/javascript" src="bg/PersonCenter/js/jPlayer/jquery.jplayer.min.js"></script>
+  <script type="text/javascript" src="bg/PersonCenter/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+  <script type="text/javascript" src="bg/PersonCenter/js/jPlayer/demo.js"></script>
 
-
-
-      function toProvince(){ 
-      var _country=document.getElementById("country"); 
-      var _province=document.getElementById("province"); 
-      var _city=document.getElementById("city"); 
-      var v_country=_country.value; 
-
-      _province.options.length=1; 
-      _city.options.length=1; 
-
-      for(var e in list){ 
-      if(list[e].value==v_country){ 
-      for( var p in list[e].province){ 
-      var opt_2=new Option(list[e].province[p].name,list[e].province[p].value); 
-      _province.add(opt_2); 
-
-      } 
-      break; 
-      } 
-      } 
-      } 
-
-
-      function toCity(){ 
-      var _country=document.getElementById("country"); 
-      var _province=document.getElementById("province"); 
-      var _city=document.getElementById("city"); 
-
-      var v_country=_country.value; 
-      var v_province=_province.value; 
-
-      //_province.options.length=1; 
-      _city.options.length=1; 
-
-
-      for(var e in list){ 
-      if(list[e].value==v_country){ 
-      for( var p in list[e].province){ 
-      //alert(list[e].province[p].value); 
-      if(list[e].province[p].value==v_province){ 
-      // alert(list[e].province[p].value); 
-      for(var cc in list[e].province[p].city){ 
-      var opt_3=new Option(list[e].province[p].city[cc].name,list[e].province[p].city[cc].value); 
-      _city.add(opt_3); 
-      } 
-
-      return; 
-      } 
-
-
-      } 
-      break; 
-      } 
-      } 
-      }
-</script> 
-</head> 
-
-<body onload="init();"> 
-<div id="111"></div>
-<select id="country" onchange="toProvince();"> 
-<option value="-1">--请选择国家---</option> 
-</select> 
-<select id="province" onchange="toCity();"> 
-<option value="-1">--请选择省份---</option> 
-</select> 
-<select id="city"> 
-<option value="-1">--请选择市区---</option> 
-</select> 
-<dl>  
-            <dt>领导、老师</dt>  
-  
-            <dd><img src="bg/images/o1.jpg" width="100" height="100" />
-            <a href="#">zzzzzzzzzzzzz</a><br>
-            <a href="#">zzzzzzzzzzzzz</a><br>
-            <a href="#">zzzzzzzzzzzzz</a><br>
-            <a href="#">zzzzzzzzzzzzz</a><br>
-            <a href="#">zzzzzzzzzzzzz</a><br>
-            <a href="#">zzzzzzzzzzzzz</a><br>
-            </dd>    
-</dl>
-</body> 
-</html> 
+</body>
+</html>
