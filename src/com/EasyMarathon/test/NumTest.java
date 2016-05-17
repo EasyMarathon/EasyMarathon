@@ -6,7 +6,7 @@ public class NumTest
 {
 	public static void main(String[] args)
 	{
-		String fname = "D:\\Programs Data\\VSProject\\electronicBusiness\\electronicBusiness\\IMG_9998OK.JPG";
+		String fname = NumIdentify.curpath + "134.jpg";
 		NumIdentify ni = new NumIdentify();
 		System.out.println("run dll");
 		int ans = ni.GetID(fname);
