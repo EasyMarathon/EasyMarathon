@@ -161,8 +161,10 @@ public class UserUpload extends HttpServlet{
 			request.getRequestDispatcher("bg/upLoadunsuccess.jsp").forward(request, response);
 			e.printStackTrace();
 		}
-        System.out.println("上传成功！");
-		DaoBase.close(conn, null, null);
+        finally{
+        	System.out.println("上传成功！");
+    		DaoBase.close(conn, null, null);
+        }
         request.getRequestDispatcher("bg/uploadsuccess.jsp").forward(request, response);
 	}
 }

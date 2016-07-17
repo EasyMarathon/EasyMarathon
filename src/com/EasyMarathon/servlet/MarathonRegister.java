@@ -13,6 +13,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ import com.EasyMarathon.dao.DaoBase;
 import com.EasyMarathon.dao.FreePicDao;
 import com.EasyMarathon.dao.UserDao;
 import com.EasyMarathon.other.MD5;
+import com.EasyMarathon.util.FaceAlignment;
 
 public class MarathonRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -174,7 +176,8 @@ public class MarathonRegister extends HttpServlet {
                     //给文件命名加MD5
                     MD5 md5 = new MD5();
                     String time = Long.toString(System.currentTimeMillis());
-                    filename=md5.md5Encode(filename+time)+".jpg";
+                    String JPG=md5.md5Encode(filename+time);
+                    filename=JPG+".jpg";
                     System.out.println("New filename:"+filename);//filename包含后缀
                     File fileChild = new File(path,filename);
                     OutputStream out = new FileOutputStream(fileChild);  
@@ -188,6 +191,21 @@ public class MarathonRegister extends HttpServlet {
                     }
                     in.close();  
                     out.close();
+                    String path1=path+filename;
+                    String path2="C:\\ProgramData\\face\\"+JPG;
+                    System.out.println(path1);
+                    System.out.println(path2);
+                    FaceAlignment ni = new FaceAlignment();
+            		System.out.println("run dll");
+            		try{
+            			System.out.println(1);
+            			int ans = ni.cutface(path1, path2);
+            			System.out.println("ans:"+ans);
+            		}
+            		catch(Exception e)
+            		{
+            			e.printStackTrace();
+            		}
                 }
             }
         	System.out.println("filename:"+filename);

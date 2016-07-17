@@ -606,7 +606,7 @@ body.container {
     padding-bottom: 20px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 2000px) {
   body.container {
     -webkit-box-shadow: 0 3px 60px rgba(0,0,0,0.3);
     box-shadow: 0 3px 60px rgba(0,0,0,0.3);
@@ -866,7 +866,7 @@ body.container {
 .nav-primary ul.nav ul {
   display: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 2000px) {
   .visible-nav-xs {
     display: none;
   }
@@ -996,7 +996,7 @@ body.container {
     padding: 20px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 2000px) {
   .navbar-fixed-top-xs {
     position: fixed !important;
     left: 0;
@@ -3555,13 +3555,13 @@ fieldset[disabled] .i-checks input + i:before {
   font-size: 170px;
   text-shadow: 0 1px 0 #d9d9d9, 0 2px 0 #d0d0d0, 0 5px 10px rgba(0,0,0,0.125), 0 10px 20px rgba(0,0,0,0.2);
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 3000px) {
   .col-lg-2-4 {
     width: 20.000%;
     float: left;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 1999px) {
   .shift {
     display: none !important;
   }

@@ -10,6 +10,37 @@ import com.EasyMarathon.dao.UserDao;
 public class UserService {
 	
 
+	public static UserBean findUser(int eventID,int athleteID)
+	{
+		System.out.println("根据赛事号和号码拍照用户");
+		Connection conn;
+		conn = DaoBase.getConnection(true);
+		System.out.println(1);
+		System.out.println(2);
+		System.out.println(3);
+		UserDao userdao = new UserDao(conn);
+		System.out.println(4);
+		UserBean user=new UserBean();
+		try
+		{	
+			
+			user=userdao.GetUser1(eventID, athleteID);
+		}
+		catch (SQLException e)
+		{
+			System.out.println(1);
+			e.printStackTrace();
+		}
+		finally
+		{
+			
+			DaoBase.close(conn, null, null);
+			
+		}
+
+		return user;
+		
+	}
 	public boolean register(String userName,String celphone,String email,String wechatID)
 	{
 		System.out.println("进入service");

@@ -10,10 +10,11 @@ public class ConfirmData {
 	private String urgencyPhone = "";
 	private String IdentityPic = "";
 	private String wechatID ="";
+	private Integer athleteID=null;
 	
 	public ConfirmData(String name,String eventName,String IDcard,
 			String phone,String urgencyName,String urgencyPhone,
-			String IdentityPic,String wechatID,int eventID){
+			String IdentityPic,String wechatID,int eventID,int athleteID){
 		this.name=name;
 		this.eventName=eventName;
 		this.IDcard=IDcard;
@@ -23,6 +24,7 @@ public class ConfirmData {
 		this.IdentityPic=IdentityPic;
 		this.setWechatID(wechatID);
 		this.eventID=eventID;
+		this.athleteID=athleteID;
 	}
 	
 	public String getName() {
@@ -84,5 +86,13 @@ public class ConfirmData {
 
 	public void setEventID(int eventID) {
 		this.eventID = eventID;
+	}
+
+	public Integer getAthleteID() {
+		return athleteID;
+	}
+
+	public void setAthleteID(Integer athleteID) {
+		this.athleteID = athleteID;
 	}
 }

@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.EasyMarathon.bean.Athlete;
+import com.EasyMarathon.bean.ConfirmData;
 import com.EasyMarathon.bean.EventBean;
 import com.EasyMarathon.bean.PicBean;
 import com.EasyMarathon.dao.AthleteDao;
@@ -71,6 +73,33 @@ public class AthleteService
 		}
 		return events;
 	}
+	
+	public static ArrayList<ConfirmData> GetAthlete()
+	{
+		Connection conn;
+		conn = DaoBase.getConnection(true);
+		AthleteDao athletedao = new AthleteDao(conn);
+		ArrayList<ConfirmData> ConfirmDatas = null;
+		try
+		{
+
+			ConfirmDatas = athletedao.GetsomeAthletes();
+			if (ConfirmDatas == null)
+			{
+				return null;
+			}
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			DaoBase.close(conn, null, null);
+		}
+		return ConfirmDatas;
+	}
 
 	public static ArrayList<PicBean> returnPicture(HttpServletRequest request, int athleteID, int eventID)
 	{
@@ -86,6 +115,7 @@ public class AthleteService
 			System.out.println("进入AthleteService");
 			session.setAttribute("pictures", pictures);
 			session.setAttribute("eventID",eventID);
+			System.out.println("赛事号为："+eventID);
 
 		}
 		catch (SQLException e)

@@ -16,6 +16,37 @@ public class UserDao
 		conn = c;
 	}
 
+	public UserBean GetUser1(int eventID,int athleteID) throws SQLException
+	{
+		final String sql1 = "select * from Users ,Athletes where EventID=? and AthleteID=? and Users.WechatID=Athletes.WechatID";
+		try (PreparedStatement ps1 = conn.prepareStatement(sql1))
+		{
+			ps1.setInt(1, eventID);
+			ps1.setInt(2, athleteID);
+			ResultSet rs1 = ps1.executeQuery();
+			if (!rs1.next())// no match
+				return null;
+
+			// get user
+			UserBean user = new UserBean();
+			user.setWechatID(rs1.getString("WechatID"));
+			user.setUserName(rs1.getString("UserName"));
+			user.setCelphone(rs1.getString("Celphone"));
+			user.setEmail(rs1.getString("Email"));
+			user.setBirth(rs1.getDate("Birth"));
+			user.setGender(rs1.getInt("Gender"));
+			user.setIdentityCard(rs1.getString("IdentityCard"));
+			user.setIdentityPic(rs1.getString("IdentityPic"));
+			user.setBloodType(rs1.getString("BloodType"));
+			user.setAddress(rs1.getString("Address"));
+			user.setHeight(rs1.getFloat("Height"));
+			user.setWeight(rs1.getFloat("Weight"));
+			user.setUrgencyContact(rs1.getString("UrgencyContact"));
+			user.setUrgencyPhone(rs1.getString("UrgencyPhone"));
+			
+			return user;
+		}
+	}
 	public UserBean GetUser(String wechatID) throws SQLException
 	{
 		final String sql1 = "select * from Users where WechatID=?";

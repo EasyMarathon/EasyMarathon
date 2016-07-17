@@ -139,7 +139,7 @@
 							<div class="row row-sm">
 								<%
 									ArrayList<PicBean> pictures = (ArrayList<PicBean>)session.getAttribute("pictures");									
-									int eventID=(int)request.getAttribute("eventID");
+									int eventID=(int)session.getAttribute("eventID");
 									System.out.println(pictures.size());
 									System.out.print(eventID);
 									int start = 0;

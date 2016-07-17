@@ -102,7 +102,6 @@
     <servlet-name>ConfirmInfo</servlet-name>
     <url-pattern>/ConfirmInfo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ConfirmInfo2</servlet-name>
     <servlet-class>
@@ -113,7 +112,6 @@
     <servlet-name>ConfirmInfo2</servlet-name>
     <url-pattern>/ConfirmInfo2</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ConfirmInfoReject</servlet-name>
     <servlet-class>
@@ -124,5 +122,4 @@
     <servlet-name>ConfirmInfoReject</servlet-name>
     <url-pattern>/ConfirmInfoReject</url-pattern>
   </servlet-mapping>
-  
 </web-app>
